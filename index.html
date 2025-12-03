@@ -1,176 +1,155 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Verificação CNH – GOV.BR</title>
-<style>
-body {
-    margin: 0;
-    font-family: Arial, sans-serif;
-    background: #f1f3f5;
-}
-.header {
-    background: #002b7f;
-    padding: 15px;
-    display: flex;
-    align-items: center;
-    color: white;
-}
-.header svg {
-    width: 42px;
-    margin-right: 12px;
-}
-.container {
-    max-width: 450px;
-    margin: 0 auto;
-    background: white;
-    padding: 25px;
-    border-radius: 12px;
-    margin-top: 25px;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-}
-.progress {
-    width: 100%;
-    background: #e6e6e6;
-    height: 10px;
-    border-radius: 20px;
-    margin-bottom: 20px;
-}
-.progress-bar {
-    height: 10px;
-    width: 0%;
-    background: #ffcb05;
-    border-radius: 20px;
-    transition: 0.3s;
-}
-.question {
-    font-size: 20px;
-    font-weight: bold;
-    color: #002b7f;
-    margin-bottom: 20px;
-}
-.option {
-    background: #eef2f7;
-    padding: 15px;
-    border-radius: 10px;
-    margin-bottom: 12px;
-    cursor: pointer;
-    border: 2px solid transparent;
-}
-.option:hover {
-    border-color: #002b7f;
-}
-.button {
-    width: 100%;
-    padding: 14px;
-    border: none;
-    background: #002b7f;
-    color: white;
-    border-radius: 10px;
-    font-size: 17px;
-    margin-top: 10px;
-    cursor: pointer;
-}
-.result-box {
-    text-align: center;
-}
-.result-title {
-    font-size: 28px;
-    color: #002b7f;
-    font-weight: bold;
-    margin-bottom: 12px;
-}
-.result-text {
-    font-size: 18px;
-    margin-bottom: 20px;
-}
-</style>
-</head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>GOV • Verificação de Aptidão CNH</title>
 
+<style>
+    body {
+        margin: 0;
+        padding: 0;
+        font-family: Arial, sans-serif;
+        background: #f1f3f5;
+    }
+
+    .header {
+        background: #063970;
+        padding: 20px;
+        text-align: center;
+        color: white;
+        font-size: 22px;
+        font-weight: bold;
+    }
+
+    .logo {
+        margin-top: 10px;
+        width: 150px;
+    }
+
+    .quiz-container {
+        max-width: 450px;
+        background: white;
+        margin: 20px auto;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+
+    .question {
+        font-size: 18px;
+        font-weight: bold;
+        margin-bottom: 15px;
+    }
+
+    .option {
+        background: #e8eef3;
+        padding: 12px;
+        margin: 10px 0;
+        border-radius: 8px;
+        cursor: pointer;
+        font-size: 16px;
+        transition: 0.2s;
+    }
+
+    .option:hover {
+        background: #d6e4ee;
+    }
+
+    .hidden {
+        display: none;
+    }
+
+    .button {
+        width: 100%;
+        background: #063970;
+        color: #fff;
+        padding: 15px;
+        border-radius: 8px;
+        text-align: center;
+        cursor: pointer;
+        font-size: 18px;
+        margin-top: 20px;
+    }
+
+    .progress {
+        height: 8px;
+        width: 0%;
+        background: #063970;
+        margin-bottom: 15px;
+        border-radius: 5px;
+        transition: width 0.3s;
+    }
+</style>
+
+</head>
 <body>
 
 <div class="header">
-    <svg xmlns="http://www.w3.org/2000/svg" fill="white" viewBox="0 0 24 24">
-        <path d="M12 2l9 4v6c0 5-3.8 9.7-9 10-5.2-.3-9-5-9-10V6l9-4z"/>
-    </svg>
-    <h2>GOV.BR – Avaliação CNH</h2>
+    GOV.BR — Avaliação de Aptidão CNH
+    <br>
+    <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/Gov.br_logo.png" class="logo">
 </div>
 
-<div class="container" id="quizBox">
+<div class="quiz-container">
 
-    <div class="progress"><div class="progress-bar" id="progressBar"></div></div>
+    <div class="progress" id="progress"></div>
 
-    <div id="questionBox"></div>
+    <div id="quiz"></div>
 
 </div>
 
 <script>
 const questions = [
-    {
-        q: "Qual é a distância mínima para ligar o pisca alerta em uma parada obrigatória?",
-        a: ["30 metros", "20 metros", "10 metros", "50 metros"],
-        c: 0
-    },
-    {
-        q: "Qual ação é obrigatória ao se aproximar de uma faixa de pedestres?",
-        a: ["Buzinar", "Reduzir e parar, se necessário", "Acelerar", "Ignorar"],
-        c: 1
-    },
-    {
-        q: "O que significa uma placa de fundo amarelo?",
-        a: ["Regulamentação", "Advertência", "Indicação", "Rota alternativa"],
-        c: 1
-    },
-    {
-        q: "O que fazer ao ver um semáforo piscando amarelo?",
-        a: ["Parar totalmente", "Acelerar", "Redobrar atenção e reduzir", "Ignorar"],
-        c: 2
-    },
-    {
-        q: "O cinto de segurança é obrigatório para:",
-        a: ["Somente o motorista", "Somente passageiros da frente", "Todos os ocupantes", "Somente maiores de idade"],
-        c: 2
-    }
+    { q: "O que significa a placa de ‘PARE’?", o: ["Prossiga com atenção", "Pare obrigatoriamente", "Reduza a velocidade"], a: 1 },
+    { q: "Qual é a velocidade máxima em vias urbanas (quando não há placa)?", o: ["40 km/h", "50 km/h", "60 km/h"], a: 2 },
+    { q: "O que fazer ao ver um pedestre na faixa?", o: ["Acelerar", "Buzinar", "Dar preferência"], a: 2 },
+    { q: "Quando é permitido usar o celular dirigindo?", o: ["Nunca", "Quando estiver no viva-voz", "Quando estiver em baixa velocidade"], a: 1 },
+    { q: "Qual é o limite de álcool permitido para dirigir?", o: ["0.0%", "0.3%", "0.5%"], a: 0 },
+    { q: "Qual documento é obrigatório portar ao dirigir?", o: ["RG", "Comprovante de residência", "CNH"], a: 2 },
+    { q: "O que significa uma luz amarela no semáforo?", o: ["Pare imediatamente", "Atenção, vai fechar", "Pode avançar rápido"], a: 1 },
+    { q: "Como deve ser feita a ultrapassagem?", o: ["Pela direita", "Pela esquerda", "Pelo acostamento"], a: 1 },
+    { q: "Em caso de chuva forte, o que fazer?", o: ["Aumentar velocidade", "Reduzir velocidade", "Manter mesma velocidade"], a: 1 },
+    { q: "O que é obrigatório para todos os ocupantes do veículo?", o: ["Tênis", "Cinto de segurança", "Capacete"], a: 1 },
+    { q: "Qual é o número de emergência de trânsito?", o: ["190", "192", "191"], a: 2 },
+    { q: "O que deve ser feito antes de mudar de faixa?", o: ["Olhar retrovisores e dar seta", "Acelerar", "Esperar alguém sinalizar"], a: 0 },
+    { q: "Dirigir cansado aumenta:", o: ["Reflexos", "Risco de acidentes", "Concentração"], a: 1 },
+    { q: "A CNH definitiva é liberada após:", o: ["1 ano sem infrações graves", "2 anos dirigindo", "Prova teórica"], a: 0 },
+    { q: "Qual atitude é correta em uma rotatória?", o: ["Quem está entrando tem preferência", "Quem já está dentro tem preferência", "Sempre pare"], a: 1 },
 ];
 
 let current = 0;
-let score = 0;
 
 function loadQuestion() {
-    if (current >= questions.length) return finish();
-    document.getElementById("progressBar").style.width = ((current) / questions.length) * 100 + "%";
+    if (current >= questions.length) {
+        document.querySelector(".quiz-container").innerHTML = `
+            <h2 style="text-align:center;">Análise concluída!</h2>
+            <p style="text-align:center;font-size:18px;margin-top:15px;">
+                Você está apto(a) para prosseguir com a solicitação da sua CNH GOV.
+            </p>
+            <div class="button" onclick="alert('Próxima etapa...')">
+                Finalizar e Prosseguir
+            </div>
+        `;
+        return;
+    }
 
     const q = questions[current];
-    let html = `<div class='question'>${q.q}</div>`;
-    q.a.forEach((opt, i) => {
-        html += `<div class='option' onclick="answer(${i})">${opt}</div>`;
-    });
-    document.getElementById("questionBox").innerHTML = html;
+    const quiz = document.getElementById("quiz");
+
+    document.getElementById("progress").style.width = ((current) / questions.length * 100) + "%";
+
+    quiz.innerHTML = `
+        <div class="question">${q.q}</div>
+        ${q.o.map((opt, i) => `
+            <div class="option" onclick="select(${i})">${opt}</div>
+        `).join("")}
+    `;
 }
 
-function answer(i) {
-    if (i === questions[current].c) score++;
+function select(i) {
     current++;
     loadQuestion();
-}
-
-function finish() {
-    document.getElementById("progressBar").style.width = "100%";
-    document.getElementById("quizBox").innerHTML = `
-        <div class='result-box'>
-            <div class='result-title'>Avaliação Concluída</div>
-            <div class='result-text'>
-                Você acertou <b>${score}</b> de <b>${questions.length}</b> perguntas.
-            </div>
-            <div class='result-text'>
-                ${score >= 3 
-                    ? "Parabéns! Você está <b>apto</b> para prosseguir com sua CNH." 
-                    : "Você não atingiu a pontuação mínima. Tente novamente."}
-            </div>
-            <button class='button'>Avançar</button>
-        </div>
-    `;
 }
 
 loadQuestion();
