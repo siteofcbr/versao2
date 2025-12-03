@@ -275,19 +275,6 @@ body{
   transform-origin:center;
   z-index:9999;
 }
-
-/* NOVO CSS PARA A TELA DE PROCESSAMENTO */
-.processing .dot {
-  width: 12px;
-  height: 12px;
-  border-radius: 50%;
-  background-color: var(--gov-blue);
-  animation: dotPulse 1.2s infinite ease-in-out;
-}
-@keyframes dotPulse {
-  0%, 100% { transform: scale(0.8); opacity: 0.6; }
-  50% { transform: scale(1.2); opacity: 1; }
-}
 </style>
 </head>
 <body>
@@ -350,21 +337,6 @@ body{
     </div>
   </div>
 
-    <div class="card processing" id="processingCard" style="display:none">
-    <div style="padding:28px;text-align:center;">
-      <div style="font-size:20px;font-weight:700;color:var(--gov-blue);margin-bottom:12px">Aguarde</div>
-      <p class="small">Verificando aptidão psicotécnica e teórica...</p>
-      <div style="margin:24px 0 16px;display:flex;justify-content:center;gap:10px">
-        <div class="dot" style="animation-delay:0s"></div>
-        <div class="dot" style="animation-delay:0.2s"></div>
-        <div class="dot" style="animation-delay:0.4s"></div>
-      </div>
-      <div class="small">
-        Analisando seus resultados — Isso pode levar alguns segundos.
-      </div>
-    </div>
-  </div>
-
   <div class="card" id="resultCard" style="display:none"></div>
 </div>
 
@@ -421,7 +393,6 @@ const timeLeft = document.getElementById('timeLeft');
 const toast = document.getElementById('toast');
 const card = document.getElementById('card');
 const resultCard = document.getElementById('resultCard');
-const processingCard = document.getElementById('processingCard'); // NOVO: Obter referência
 const soundSelect = document.getElementById('soundSelect');
 const soundCorrect = document.getElementById('soundCorrect');
 const soundWrong = document.getElementById('soundWrong');
@@ -529,20 +500,14 @@ btnSkip.addEventListener('click',()=>{
   nextQuestion();
 });
 
-// FUNÇÃO finish() CORRIGIDA: Implementa a tela de processamento com temporizador
+// FUNÇÃO finish() CORRIGIDA: Adicionado um breve setTimeout para estabilizar a transição
 function finish(){
   clearInterval(timerInterval);
-  card.style.display='none';
-  document.getElementById('miniProgress').style.width='100%';
-
-  // 1. Exibir a tela de carregamento/processamento
-  processingCard.style.display='block';
-
-  // 2. Definir um atraso para simular o "processamento" antes de mostrar o resultado
-  setTimeout(()=>{
-    processingCard.style.display='none'; // Oculta o card de processamento
-    resultCard.style.display='block';    // Exibe o card de resultado
-    
+  // Adicionamos um pequeno atraso antes de manipular o DOM para garantir que
+  // o navegador complete as operações anteriores e a tela não pisque/bugue.
+  setTimeout(() => {
+    card.style.display='none';
+    resultCard.style.display='block';
     const pass = score >= minScore;
     resultCard.innerHTML = `
       <div class="result">
@@ -557,11 +522,11 @@ function finish(){
         </div>
       </div>
     `;
-    
+    document.getElementById('miniProgress').style.width='100%';
     if(pass) confettiBurst();
     document.getElementById('btnRetry').onclick = ()=> location.reload();
     document.getElementById('btnGuide').onclick = ()=> window.open('https://www.gov.br/pt-br/servicos/solicitar-emitir-cnh','_blank');
-  }, 1500); // Atraso de 1.5 segundos para o processamento
+  }, 100); // 100ms de atraso para resolver o problema de carregamento/flash/bug.
 }
 
 function getIconForQuestion(i){
