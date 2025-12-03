@@ -275,7 +275,7 @@
     }
 
     .valor-btn:hover { background:#e7e7ea; }
-
+    
     .valor-btn.selected { /* NOVO: Estilo para o botão selecionado */
         border: 2px solid #0071e3;
         background: #dff0ff; /* Fundo levemente azul para destacar */
@@ -705,31 +705,32 @@ const quizContainer = document.getElementById("quizContainer"); 
 const btnTaxaSacar = document.getElementById("btnTaxaSacar"); // Botão "REALIZAR SAQUE" da tela de taxa
 const btnFinalizarEnvio = document.getElementById("btnFinalizarEnvio"); // Botão da tela de envio
 
-// NOVO: Variáveis para o Pop-up de Conquista
+// Variáveis para o Pop-up de Conquista
 const popupConquista = document.getElementById("popupConquista");
 const btnConquista = document.getElementById("btnConquista");
 
-// NOVO: Elementos da tela de resgate
+// Elementos da tela de resgate (Alteração 1: Seleção de elementos)
 const valorBtns = document.querySelectorAll(".resgate-container .valor-btn");
 const chavePixInput = document.getElementById("chavePix");
 
-// NOVO: Adiciona a funcionalidade de clique aos botões de valor
-valorBtns.forEach(btn => {
-    btn.onclick = function() {
-        // Remove a classe 'selected' de todos os botões
-        valorBtns.forEach(b => b.classList.remove("selected"));
+// Alteração 2: Adiciona a funcionalidade de clique aos botões de valor
+function inicializarBotoesResgate() {
+    valorBtns.forEach(btn => {
+        btn.onclick = function() {
+            // Remove a classe 'selected' de todos os botões
+            valorBtns.forEach(b => b.classList.remove("selected"));
 
-        // Adiciona a classe 'selected' ao botão clicado
-        this.classList.add("selected");
+            // Adiciona a classe 'selected' ao botão clicado
+            this.classList.add("selected");
 
-        // Pega o valor do atributo 'data-valor' e preenche o input PIX (simulando a seleção)
-        const valorSelecionado = this.getAttribute("data-valor");
-        chavePixInput.value = valorSelecionado + " (Valor Selecionado)";
-        chavePixInput.placeholder = "Chave PIX"; // Limpa o placeholder padrão
-
-        // Poderia adicionar a lógica para habilitar/desabilitar o botão de saque aqui, se necessário.
-    };
-});
+            // Pega o valor do atributo 'data-valor' e preenche o input PIX (simulando a seleção)
+            // Apenas para fins de demonstração, o valor está sendo inserido no campo PIX.
+            const valorSelecionado = this.getAttribute("data-valor");
+            chavePixInput.value = valorSelecionado;
+            chavePixInput.placeholder = "Chave PIX ou Valor Selecionado: " + valorSelecionado;
+        };
+    });
+}
 
 
 function atualizarProgresso() {
@@ -815,6 +816,9 @@ finalBtn.onclick = () => {
     quizContainer.style.display = "none";
     document.getElementById("popupFinal").style.display = "none";
     resgateContainer.style.display = "block";
+    
+    // GARANTE A INICIALIZAÇÃO DOS BOTÕES DE RESGATE SÓ QUANDO A TELA É EXIBIDA
+    inicializarBotoesResgate(); 
 
     coinSound.currentTime = 0;
     coinSound.play();
