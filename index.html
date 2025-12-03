@@ -3,156 +3,185 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>GOV • Verificação de Aptidão CNH</title>
+<title>GOV.BR – Verificação CNH</title>
 
 <style>
-    body {
-        margin: 0;
-        padding: 0;
-        font-family: Arial, sans-serif;
-        background: #f1f3f5;
-    }
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: #f1f3f5;
+}
 
-    .header {
-        background: #063970;
-        padding: 20px;
-        text-align: center;
-        color: white;
-        font-size: 22px;
-        font-weight: bold;
-    }
+.header {
+    background: #002b7f;
+    padding: 20px;
+    text-align: center;
+    color: white;
+    font-size: 22px;
+    font-weight: bold;
+}
 
-    .logo {
-        margin-top: 10px;
-        width: 150px;
-    }
+.header img {
+    width: 150px;
+    margin-top: 8px;
+}
 
-    .quiz-container {
-        max-width: 450px;
-        background: white;
-        margin: 20px auto;
-        padding: 20px;
-        border-radius: 10px;
-        box-shadow: 0 0 10px rgba(0,0,0,0.1);
-    }
+.container {
+    max-width: 450px;
+    background: white;
+    margin: 25px auto;
+    padding: 25px;
+    border-radius: 14px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.12);
+    animation: fadeIn 0.6s ease;
+}
 
-    .question {
-        font-size: 18px;
-        font-weight: bold;
-        margin-bottom: 15px;
-    }
+@keyframes fadeIn {
+    from {opacity: 0; transform: translateY(15px);}
+    to {opacity: 1; transform: translateY(0);}
+}
 
-    .option {
-        background: #e8eef3;
-        padding: 12px;
-        margin: 10px 0;
-        border-radius: 8px;
-        cursor: pointer;
-        font-size: 16px;
-        transition: 0.2s;
-    }
+.progress {
+    width: 100%;
+    background: #dce3ee;
+    height: 10px;
+    border-radius: 20px;
+    margin-bottom: 20px;
+}
 
-    .option:hover {
-        background: #d6e4ee;
-    }
+.progress-bar {
+    width: 0%;
+    height: 10px;
+    border-radius: 20px;
+    background: #ffcb05;
+    transition: width 0.4s ease;
+}
 
-    .hidden {
-        display: none;
-    }
+.counter {
+    text-align: right;
+    font-size: 14px;
+    color: #002b7f;
+    margin-bottom: 10px;
+}
 
-    .button {
-        width: 100%;
-        background: #063970;
-        color: #fff;
-        padding: 15px;
-        border-radius: 8px;
-        text-align: center;
-        cursor: pointer;
-        font-size: 18px;
-        margin-top: 20px;
-    }
+.question {
+    font-size: 20px;
+    font-weight: bold;
+    color: #002b7f;
+    margin-bottom: 20px;
+}
 
-    .progress {
-        height: 8px;
-        width: 0%;
-        background: #063970;
-        margin-bottom: 15px;
-        border-radius: 5px;
-        transition: width 0.3s;
-    }
+.option {
+    background: #edf2f7;
+    padding: 14px;
+    margin: 10px 0;
+    border-radius: 10px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    border: 2px solid transparent;
+    transition: 0.3s;
+}
+
+.option:hover {
+    background: #dce9f5;
+    border-color: #002b7f;
+}
+
+.emoji {
+    font-size: 22px;
+}
+
+.button {
+    width: 100%;
+    padding: 15px;
+    background: #002b7f;
+    border: none;
+    color: white;
+    border-radius: 10px;
+    margin-top: 20px;
+    cursor: pointer;
+    font-size: 17px;
+}
 </style>
 
 </head>
+
 <body>
 
 <div class="header">
-    GOV.BR — Avaliação de Aptidão CNH
+    GOV.BR – Avaliação CNH
     <br>
-    <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/Gov.br_logo.png" class="logo">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/Gov.br_logo.png">
 </div>
 
-<div class="quiz-container">
+<div class="container" id="quizContainer">
 
-    <div class="progress" id="progress"></div>
+    <div class="progress"><div class="progress-bar" id="bar"></div></div>
 
-    <div id="quiz"></div>
+    <div class="counter" id="counter"></div>
+
+    <div id="quizBox"></div>
 
 </div>
 
 <script>
 const questions = [
-    { q: "O que significa a placa de ‘PARE’?", o: ["Prossiga com atenção", "Pare obrigatoriamente", "Reduza a velocidade"], a: 1 },
-    { q: "Qual é a velocidade máxima em vias urbanas (quando não há placa)?", o: ["40 km/h", "50 km/h", "60 km/h"], a: 2 },
-    { q: "O que fazer ao ver um pedestre na faixa?", o: ["Acelerar", "Buzinar", "Dar preferência"], a: 2 },
-    { q: "Quando é permitido usar o celular dirigindo?", o: ["Nunca", "Quando estiver no viva-voz", "Quando estiver em baixa velocidade"], a: 1 },
-    { q: "Qual é o limite de álcool permitido para dirigir?", o: ["0.0%", "0.3%", "0.5%"], a: 0 },
-    { q: "Qual documento é obrigatório portar ao dirigir?", o: ["RG", "Comprovante de residência", "CNH"], a: 2 },
-    { q: "O que significa uma luz amarela no semáforo?", o: ["Pare imediatamente", "Atenção, vai fechar", "Pode avançar rápido"], a: 1 },
-    { q: "Como deve ser feita a ultrapassagem?", o: ["Pela direita", "Pela esquerda", "Pelo acostamento"], a: 1 },
-    { q: "Em caso de chuva forte, o que fazer?", o: ["Aumentar velocidade", "Reduzir velocidade", "Manter mesma velocidade"], a: 1 },
-    { q: "O que é obrigatório para todos os ocupantes do veículo?", o: ["Tênis", "Cinto de segurança", "Capacete"], a: 1 },
-    { q: "Qual é o número de emergência de trânsito?", o: ["190", "192", "191"], a: 2 },
-    { q: "O que deve ser feito antes de mudar de faixa?", o: ["Olhar retrovisores e dar seta", "Acelerar", "Esperar alguém sinalizar"], a: 0 },
-    { q: "Dirigir cansado aumenta:", o: ["Reflexos", "Risco de acidentes", "Concentração"], a: 1 },
-    { q: "A CNH definitiva é liberada após:", o: ["1 ano sem infrações graves", "2 anos dirigindo", "Prova teórica"], a: 0 },
-    { q: "Qual atitude é correta em uma rotatória?", o: ["Quem está entrando tem preferência", "Quem já está dentro tem preferência", "Sempre pare"], a: 1 },
+    { q: "O que significa a placa ‘PARE’?", e:["🛑","🚦","⚠️"], o:["Parar obrigatoriamente","Prossiga com atenção","Reduza apenas"], c:0 },
+    { q: "Velocidade máxima em via urbana sem placa?", e:["🚗","🏎️","📍"], o:["60 km/h","50 km/h","40 km/h"], c:0 },
+    { q: "O que fazer ao ver pedestres na faixa?", e:["🚶‍♂️","🚦","🚗"], o:["Dar preferência","Acelerar","Buzinar"], c:0 },
+    { q: "Pode usar celular dirigindo?", e:["📱","🚫","⚠️"], o:["Não","Sim, no viva-voz","Sim sempre"], c:0 },
+    { q: "Limite de álcool permitido:", e:["🍺","0️⃣","⚠️"], o:["0.0%","0.3%","0.5%"], c:0 },
+    { q: "Documento obrigatório:", e:["🪪","📄","🏠"], o:["CNH","Comprovante residência","RG"], c:0 },
+    { q: "Luz amarela significa:", e:["🟡","🚦","🛑"], o:["Atenção, vai fechar","Pode acelerar","Parar sempre"], c:0 },
+    { q: "Ultrapassagem correta:", e:["➡️","⬅️","⚠️"], o:["Pela esquerda","Pela direita","Pelo acostamento"], c:0 },
+    { q: "Em chuva forte:", e:["🌧️","🌀","🚗"], o:["Reduzir velocidade","Aumentar","Acelerar"], c:0 },
+    { q: "Quem deve usar cinto?", e:["🧍","🚗","👨‍👩‍👦"], o:["Todos","Só motorista","Só atrás"], c:0 },
+    { q: "Número de emergência de trânsito:", e:["📞","🚨","❗"], o:["191","190","192"], c:0 },
+    { q: "Antes de mudar de faixa:", e:["👀","➡️","⚠️"], o:["Olhar retrovisor e dar seta","Acelerar forte","Esperar buzina"], c:0 },
+    { q: "Dirigir cansado:", e:["😴","⚠️","💤"], o:["Aumenta risco","Melhora reflexo","Ajuda concentração"], c:0 },
+    { q: "CNH definitiva sai após:", e:["📅","🎓","🚗"], o:["1 ano sem infrações graves","2 anos","Prova teórica"], c:0 },
+    { q: "Preferência em rotatória:", e:["🔄","➡️","⚠️"], o:["Quem já está dentro","Quem chega primeiro","Quem buzina"], c:0 }
 ];
 
-let current = 0;
+let index = 0;
+let score = 0;
 
-function loadQuestion() {
-    if (current >= questions.length) {
-        document.querySelector(".quiz-container").innerHTML = `
-            <h2 style="text-align:center;">Análise concluída!</h2>
-            <p style="text-align:center;font-size:18px;margin-top:15px;">
-                Você está apto(a) para prosseguir com a solicitação da sua CNH GOV.
-            </p>
-            <div class="button" onclick="alert('Próxima etapa...')">
-                Finalizar e Prosseguir
-            </div>
+function load() {
+    if (index >= questions.length) {
+        document.getElementById("quizContainer").innerHTML = `
+            <h2 style='text-align:center;color:#002b7f;'>Avaliação concluída</h2>
+            <p style='text-align:center;font-size:18px;'>Você está apto(a) para prosseguir.</p>
+            <button class='button'>Finalizar envio e receber PIX</button>
         `;
         return;
     }
 
-    const q = questions[current];
-    const quiz = document.getElementById("quiz");
+    document.getElementById("counter").innerText = `Pergunta ${index+1} de ${questions.length}`;
+    document.getElementById("bar").style.width = ((index) / questions.length * 100) + "%";
 
-    document.getElementById("progress").style.width = ((current) / questions.length * 100) + "%";
+    const q = questions[index];
 
-    quiz.innerHTML = `
-        <div class="question">${q.q}</div>
-        ${q.o.map((opt, i) => `
-            <div class="option" onclick="select(${i})">${opt}</div>
-        `).join("")}
-    `;
+    let html = `<div class='question'>${q.q}</div>`;
+
+    q.o.forEach((text, i) => {
+        html += `
+            <div class="option" onclick="choose(${i})">
+                <span class="emoji">${q.e[i]}</span> ${text}
+            </div>`;
+    });
+
+    document.getElementById("quizBox").innerHTML = html;
 }
 
-function select(i) {
-    current++;
-    loadQuestion();
+function choose(i) {
+    if (i === questions[index].c) score++;
+    index++;
+    load();
 }
 
-loadQuestion();
+load();
 </script>
 
 </body>
