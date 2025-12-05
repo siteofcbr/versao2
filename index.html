@@ -111,59 +111,80 @@ body {
 
 .footer { font-size:0.8rem; color:#555; text-align:center; margin-bottom:15px; }
 
-/* --- TELA DE BOAS-VINDAS (NOVA TELA PRINCIPAL) --- */
-.welcome-container {
-    padding: 50px 20px;
+/* --- TELA DE INÍCIO (PRIMEIRA TELA) --- */
+.start-screen {
+    padding: 40px 20px;
     text-align: center;
-    background: linear-gradient(180deg, #002b7f, #0041c2); /* Fundo em degradê similar ao header */
-    color: #fff;
-    border-radius: 15px; /* Manter o mesmo border-radius do quiz-container */
-    box-shadow: 0 15px 40px rgba(0,0,0,0.2);
-    min-height: 400px; /* Para manter uma boa altura */
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-    align-items: center;
-    width: 100%;
-    box-sizing: border-box;
+    background: #f8faff; /* Fundo mais claro */
+    color: #002b7f;
 }
-.welcome-container h2 {
+.start-screen h2 {
     font-size: 2.2rem;
     font-weight: 900;
     margin-bottom: 10px;
 }
-.welcome-container p {
-    font-size: 1.1rem;
-    opacity: 0.9;
+.start-screen p {
+    font-size: 1rem;
+    color: #555;
+    margin-bottom: 25px;
+    line-height: 1.4;
+}
+
+.start-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
     margin-bottom: 30px;
 }
-#startBtn {
-    background: linear-gradient(90deg,#ffcb05,#ff9800);
+
+.start-btn-choice {
+    background: #e0e5ec;
     color: #002b7f;
+    border: 2px solid transparent;
+    padding: 15px 20px;
+    border-radius: 12px;
+    cursor: pointer;
+    font-size: 1.1rem;
+    width: 100%;
+    transition: all 0.3s ease;
+    font-weight: 700;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+}
+.start-btn-choice:hover {
+    box-shadow: 0 6px 15px rgba(0,0,0,0.15);
+}
+.start-btn-choice.selected {
+    border: 2px solid #ff9800;
+    background: #fff3e0;
+    transform: scale(1.02);
+}
+
+#mainStartBtn {
+    background: linear-gradient(90deg,#4CAF50,#2e7d32);
+    color: #fff;
     border: none;
     padding: 18px 30px;
     border-radius: 12px;
     cursor: pointer;
     font-size: 1.3rem;
-    width: 90%;
-    max-width: 350px;
+    width: 100%;
     transition: all 0.3s ease;
     font-weight: 700;
     box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+    pointer-events: none; /* Desabilitado inicialmente */
+    opacity: 0.6;
 }
-#startBtn:hover {
-    transform: scale(1.05);
-    background: linear-gradient(90deg,#ff9800,#ffcb05);
+#mainStartBtn.active {
+    pointer-events: auto;
+    opacity: 1;
 }
-.welcome-info {
-    font-size: 0.9rem;
-    margin-top: 20px;
-    padding: 10px;
-    background: rgba(255, 255, 255, 0.1);
-    border-radius: 8px;
+#mainStartBtn:hover {
+    transform: scale(1.02);
+    background: linear-gradient(90deg,#2e7d32,#4CAF50);
 }
 
-/* --- TELA DE TRANSIÇÃO (APÓS QUIZ) --- */
+
+/* --- TELA DE TRANSIÇÃO (APÓS QUIZ / VALIDAÇÃO) --- */
 .transition-container {
     padding: 50px 20px;
     text-align: center;
@@ -171,7 +192,7 @@ body {
     position: relative;
 }
 
-/* Confetes */
+/* Confetes (Mantidos) */
 .confetti {
     position: absolute;
     top: 0;
@@ -317,7 +338,7 @@ body {
 
 /* Cronômetro de Urgência */
 .timer-box {
-    background: #ff4500; 
+    background: #ff4500;
     color: #fff;
     padding: 15px 25px;
     border-radius: 15px;
@@ -333,7 +354,7 @@ body {
     font-weight: 900;
     display: block;
     margin: 5px 0 10px 0;
-    color: #ffcb05; 
+    color: #ffcb05;
     letter-spacing: 2px;
 }
 
@@ -413,17 +434,28 @@ body {
 <body>
 
 <div class="quiz-container">
-    
-    <div id="welcome-screen" class="welcome-container">
-        <div style="width: 100%;">
-            <h2 style="color: #fff; font-size: 2.5rem;">Avaliação Oficial de Aptidão CNH</h2>
-            <p style="font-size: 1.2rem; font-weight: 600;">Teste rápido para concorrer a uma CNH gratuita!</p>
+
+    <div id="start-screen" class="start-screen">
+        <h2 style="color: #002b7f;">Avaliação Oficial de Aptidão CNH</h2>
+        <p>
+            O teste a seguir é uma **Prova de Aptidão Unificada** que combina questões do **Exame Teórico e Psicotécnico** obrigatórios para a CNH. Se você atingir a pontuação mínima, garante a sua vaga na CNH Gratuita (ou renovação).
+        </p>
+
+        <h3 style="font-size: 1.4rem; color: #ff9800; margin-bottom: 15px; font-weight: 700;">Selecione o Tipo de Habilitação:</h3>
+
+        <div class="start-buttons">
+            <button class="start-btn-choice" data-type="Habilitacao">
+                🚗 Primeira Habilitação CNH Social (A, B ou AB)
+            </button>
+            <button class="start-btn-choice" data-type="Renovacao">
+                🔄 Renovação/Mudança de Categoria CNH Social
+            </button>
         </div>
-        
-        <button id="startBtn">Começar Teste Rápido de Aptidão</button>
-        
-        <div class="welcome-info">
-            *Avaliação de Aptidão Teórica e Psicotécnica | Programa CNH Social
+
+        <button id="mainStartBtn">Iniciar Prova de Aptidão</button>
+
+        <div class="footer" style="margin-top: 20px;">
+            Pontuação mínima necessária: 23/31
         </div>
     </div>
 
@@ -455,7 +487,7 @@ body {
 
     <div id="transition-screen" class="transition-container hidden">
         <div class="confetti" id="confetti-container"></div>
-        
+
         <div id="loading-phase">
             <h2 style="color: #002b7f;">Análise de Aptidão Final</h2>
             <p id="validation-message" style="font-size: 1.1rem; color: #002b7f; font-weight: 700; margin-bottom: 30px;">
@@ -486,16 +518,15 @@ body {
                  <p style="font-size: 0.9rem; color: #ff4500; font-weight: 600;">*Apenas uma categoria pode ser selecionada.</p>
              </div>
         </div>
-
     </div>
-    
+
     <div id="result-screen" class="result-container hidden">
         <h2>✅ Parabéns! Você foi Aprovado(a)!</h2>
-        
+
         <div class="score-display">
             Você atingiu a qualificação com <strong id="final-score">X de 31</strong> acertos.
         </div>
-        
+
         <p class="result-message">
             Você demonstrou preparo no exame teórico e psicotécnico, atingindo a pontuação mínima para ser considerado(a) *qualificado(a)* ao programa CNH Social.
         </p>
@@ -506,7 +537,7 @@ body {
         <p class="form-title">
             Passo 2: Pré-cadastro Oficial para Reserva da Vaga
         </p>
-        
+
         <form id="pre-cadastro-form">
             <div class="form-group">
                 <input type="text" id="nome" placeholder="Seu Nome Completo" required="">
@@ -567,9 +598,9 @@ body {
 
         <div class="justification">
             <h3>Por Que a Taxa Única de R$ 29,90 é Necessária?</h3>
-            
+
             <p>Como aprovado(a), sua CNH (que custaria mais de R$ 2.000) é **100% gratuita*. O valor de *R$ 29,90* é uma *Taxa de Processamento e Emissão de Documentos** obrigatória para a validação final da sua vaga, conforme as diretrizes operacionais do programa.</p>
-            
+
             <ul class="cost-breakdown">
                 <li><span>Custo da CNH Completa:</span> <span>R$ 2.000+</span></li>
                 <li><span>Seu Desconto CNH Social:</span> <span style="color: #ff4500;">- R$ 2.000+</span></li>
@@ -581,7 +612,7 @@ body {
         </div>
 
         <button id="payBtn">Confirmar o Pré-cadastro e Pagar Taxa Única de R$ 29,90</button>
-        
+
         <p class="small-print">Seu pagamento é processado pela plataforma de checkout seguro e garante a reserva da sua vaga no sistema do Governo.</p>
     </div>
 
@@ -629,12 +660,16 @@ let currentQuestion = 0;
 const totalQuestions = questions.length;
 let score = 0;
 const MIN_SCORE = 23;
-let cnhCategory = ''; // Variável para armazenar a Categoria escolhida
+let cnhCategory = ''; // Variável para a Categoria escolhida (A, B, AB)
+let quizType = ''; // Variável para o Tipo de CNH escolhido (Habilitacao ou Renovacao)
 
 // Elementos Principais
-const welcomeScreen = document.getElementById('welcome-screen'); // NOVO
-const startBtn = document.getElementById('startBtn'); // NOVO
+const startScreen = document.getElementById('start-screen'); // NOVO
 const quizContent = document.getElementById('quiz-content');
+
+// Elementos do Start Screen
+const startChoiceButtons = document.querySelectorAll('.start-btn-choice');
+const mainStartBtn = document.getElementById('mainStartBtn');
 
 // Elementos do Quiz
 const progressBar = document.getElementById('progress-bar');
@@ -643,7 +678,7 @@ const nextBtn = document.getElementById('nextBtn');
 const clickSound = document.getElementById('click-sound');
 
 
-// Elementos da Nova Tela de Transição (Após Quiz)
+// Elementos da Tela de Transição (PÓS-QUIZ)
 const transitionScreen = document.getElementById('transition-screen');
 const loadingPhase = document.getElementById('loading-phase');
 const loadingProgress = document.getElementById('loading-progress');
@@ -663,15 +698,30 @@ const PAYMENT_LINK = "https://compraseguraonline.org.ua/c/caf6413b55"; // LINK D
 
 let timerInterval;
 
-// NOVO: Função para iniciar o Quiz
+// Lógica para a seleção do Tipo de Habilitação (Start Screen)
+startChoiceButtons.forEach(button => {
+    button.addEventListener('click', (e) => {
+        startChoiceButtons.forEach(btn => btn.classList.remove('selected'));
+        e.target.classList.add('selected');
+        quizType = e.target.getAttribute('data-type');
+        mainStartBtn.classList.add('active'); // Habilita o botão principal
+    });
+});
+
+// Função para iniciar o Quiz (Chamada pelo botão principal)
 function startQuiz() {
-    welcomeScreen.classList.add('hidden');
+    if (!quizType) {
+        alert("Por favor, selecione o Tipo de Habilitação para iniciar.");
+        return;
+    }
+
+    startScreen.classList.add('hidden');
     quizContent.classList.remove('hidden');
     showQuestion(currentQuestion);
 }
 
-// NOVO: Evento para iniciar o Quiz
-startBtn.addEventListener('click', startQuiz);
+// Evento para iniciar o Quiz
+mainStartBtn.addEventListener('click', startQuiz);
 
 
 // Função para iniciar a animação de Confetes
@@ -699,7 +749,7 @@ function showQuestion(index){
     document.getElementById('question-title').textContent = q.titulo;
     document.getElementById('question-count').textContent = `${index+1}/${totalQuestions}`;
     optionsContainer.innerHTML = '';
-    
+
     q.opcoes.forEach((opt,i)=>{
         const card = document.createElement('div');
         card.classList.add('option-card');
@@ -709,14 +759,14 @@ function showQuestion(index){
             if(optionsContainer.classList.contains('answered')) return;
             clickSound.currentTime=0;
             clickSound.play();
-            
+
             if(i === q.correta){
                 card.classList.add('correct');
-                score++; 
+                score++;
             } else {
                 card.classList.add('wrong');
             }
-            
+
             document.querySelectorAll('.option-card').forEach(c=>c.style.pointerEvents='none');
             optionsContainer.classList.add('answered');
         });
@@ -733,15 +783,42 @@ function showChoiceScreen() {
     loadingPhase.classList.add('hidden');
     choicePhase.classList.remove('hidden');
 
+    // Ajusta o texto da tela de escolha com base na seleção inicial
+    const title = document.querySelector('#choice-phase h2');
+    const subtitle = document.querySelector('#choice-phase p');
+    const categoryTitle = document.querySelector('.category-selection h3');
+
     if (score >= MIN_SCORE) {
           startConfetti(); // Inicia os confetes ao mostrar a tela de sucesso/escolha
+
+          if (quizType === 'Renovacao') {
+            title.textContent = '🎉 RENOVAÇÃO/MUDANÇA DE CATEGORIA GARANTIDA!';
+            subtitle.innerHTML = 'Parabéns! Próxima Etapa: Confirme o tipo de CNH para o prosseguimento da sua **Renovação/Mudança de Categoria Social - *100% gratuita.***';
+            categoryTitle.textContent = 'Selecione a Categoria de sua CNH:';
+            // Renova os botões de categoria se necessário
+            document.querySelector('.category-options').innerHTML = `
+                <button class="category-btn" data-category="A">🛵 Categoria A (Moto) - Vaga Gratuita</button>
+                <button class="category-btn" data-category="B">🚗 Categoria B (Carro) - Vaga Gratuita</button>
+                <button class="category-btn" data-category="AB">🏍️ Categoria A e B (Moto e Carro) - Vaga Gratuita</button>
+            `;
+            // Re-adiciona os eventos aos novos botões de categoria
+            document.querySelectorAll('.category-btn').forEach(btn => {
+                btn.addEventListener('click', handleCategorySelection);
+            });
+          } else {
+            // Habilitacao (Primeira)
+            title.textContent = '🎉 APROVAÇÃO E VAGA GARANTIDA!';
+            subtitle.innerHTML = 'Parabéns! Próxima Etapa: Defina a categoria para a emissão da sua Carteira Nacional de Habilitação Social - *100% gratuita.*';
+            categoryTitle.textContent = 'Selecione a Categoria da sua CNH Gratuita:';
+          }
+
     } else {
           // Lógica para reprovação
-          document.querySelector('#choice-phase h2').textContent = '⚠️ Seu Perfil foi Analisado!';
-          document.querySelector('#choice-phase h2').style.color = '#ff4500';
-          document.querySelector('#choice-phase p').innerHTML = 'Infelizmente, sua pontuação **não atingiu a aptidão mínima** para a CNH gratuita.';
-          document.querySelector('.category-selection h3').classList.add('hidden');
-          
+          title.textContent = '⚠️ Seu Perfil foi Analisado!';
+          title.style.color = '#ff4500';
+          subtitle.innerHTML = 'Infelizmente, sua pontuação **não atingiu a aptidão mínima** para a CNH gratuita.';
+          categoryTitle.classList.add('hidden');
+
           // Substitui os botões de escolha por um botão de "Ver Resultado"
           document.querySelector('.category-options').innerHTML = '<button id="view-final-result" class="category-btn" style="background: #002b7f; color: #fff;">Ver Resultado Final Completo</button>';
           document.getElementById('view-final-result').addEventListener('click', showResultScreen);
@@ -768,13 +845,13 @@ function showTransitionScreen() {
 
     // Inicia o carregamento (animação CSS)
     setTimeout(() => {
-        loadingProgress.style.width = '100%'; 
+        loadingProgress.style.width = '100%';
     }, 100);
 
     // Tempo para simular a validação (3 segundos)
     setTimeout(() => {
-        showChoiceScreen(); 
-    }, 3000); 
+        showChoiceScreen();
+    }, 3000);
 }
 
 
@@ -784,20 +861,24 @@ function showResultScreen(){
     resultScreen.classList.remove('hidden');
 
     document.getElementById('final-score').textContent = `${score} de ${totalQuestions}`;
-    
+
     const cnhDisplay = document.getElementById('cnh-chosen');
     const displayContainer = document.getElementById('selected-cnh-display');
-    
+
     if (cnhCategory) {
-          cnhDisplay.textContent = `CNH Categoria ${cnhCategory}`;
+          cnhDisplay.textContent = `${quizType === 'Renovacao' ? 'Renovação Categoria' : 'CNH Categoria'} ${cnhCategory}`;
           displayContainer.classList.remove('hidden');
     } else {
           // Se não escolheu (porque reprovou), esconde a escolha da CNH
           displayContainer.classList.add('hidden');
     }
 
-
-    if (score < MIN_SCORE) {
+    // Ajusta o texto para a Renovação
+    if (score >= MIN_SCORE && quizType === 'Renovacao') {
+        document.querySelector('.result-container h2').textContent = '✅ Parabéns! Sua Renovação/Mudança de Categoria está Confirmada!';
+        document.querySelector('.result-message').innerHTML = 'Você demonstrou preparo no exame e garantiu sua **Renovação/Mudança de Categoria Social**, sendo considerado(a) *qualificado(a)* ao programa CNH Social.';
+        document.getElementById('submitBtn').textContent = 'Garantir Minha Renovação/Mudança Gratuita Agora';
+    } else if (score < MIN_SCORE) {
         document.querySelector('.result-container h2').textContent = '⚠️ Você não atingiu a pontuação mínima';
         document.querySelector('.result-container h2').style.color = '#f44336';
         document.querySelector('.result-message').innerHTML = `Sua pontuação foi de **${score} acertos**. A pontuação mínima é **${MIN_SCORE}**. Infelizmente, você não está apto(a) para a CNH Social neste momento.`;
@@ -809,15 +890,15 @@ function showResultScreen(){
 
 function startPaymentTimer(){
     // Inicia o cronômetro para a TELA 2 (10 minutos)
-    let timeInSeconds = 600; 
-    
+    let timeInSeconds = 600;
+
     function updateCountdown() {
         const minutes = Math.floor(timeInSeconds / 60);
         const seconds = timeInSeconds % 60;
-        
-        countdownElement.textContent = 
+
+        countdownElement.textContent =
             `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
-            
+
         if (timeInSeconds <= 0) {
             clearInterval(timerInterval);
             countdownElement.textContent = "00:00";
@@ -829,7 +910,7 @@ function startPaymentTimer(){
             timeInSeconds--;
         }
     }
-    
+
     // Zera qualquer timer anterior e inicia um novo
     if (timerInterval) clearInterval(timerInterval);
     timerInterval = setInterval(updateCountdown, 1000);
@@ -842,42 +923,44 @@ nextBtn.addEventListener('click', ()=>{
             currentQuestion++;
             showQuestion(currentQuestion);
         } else {
-            // Ao final do quiz, chama a nova tela de transição
-            showTransitionScreen(); 
+            // Ao final do quiz, chama a nova tela de transição (Validação de 3 segundos)
+            showTransitionScreen();
         }
     } else {
         alert("Por favor, selecione uma opção antes de prosseguir.");
     }
 });
 
-// Lógica para a escolha da CNH
+function handleCategorySelection(e) {
+    categoryButtons.forEach(btn => btn.classList.remove('selected'));
+    e.target.classList.add('selected');
+    cnhCategory = e.target.getAttribute('data-category');
+
+    // Adiciona um botão para prosseguir após a escolha
+    let proceedBtn = document.getElementById('proceed-to-form');
+    if (!proceedBtn) {
+        proceedBtn = document.createElement('button');
+        proceedBtn.id = 'proceed-to-form';
+        proceedBtn.textContent = 'Confirmar Categoria e Ir para o Pré-cadastro';
+        proceedBtn.classList.add('category-btn');
+        proceedBtn.style.marginTop = '20px';
+        proceedBtn.style.background = 'linear-gradient(90deg, #4CAF50, #2e7d32)';
+        proceedBtn.style.color = '#fff';
+        proceedBtn.style.fontWeight = '700';
+        proceedBtn.addEventListener('click', showResultScreen);
+        document.getElementById('choice-phase').querySelector('.category-selection').appendChild(proceedBtn); // Adiciona ao final da seção de seleção
+    }
+}
+// Lógica para a escolha da CNH (Re-adiciona eventos para garantir)
 categoryButtons.forEach(button => {
-    button.addEventListener('click', (e) => {
-        categoryButtons.forEach(btn => btn.classList.remove('selected'));
-        e.target.classList.add('selected');
-        cnhCategory = e.target.getAttribute('data-category');
-        
-        // Adiciona um botão para prosseguir após a escolha
-        let proceedBtn = document.getElementById('proceed-to-form');
-        if (!proceedBtn) {
-            proceedBtn = document.createElement('button');
-            proceedBtn.id = 'proceed-to-form';
-            proceedBtn.textContent = 'Confirmar Categoria e Ir para o Pré-cadastro';
-            proceedBtn.classList.add('category-btn');
-            proceedBtn.style.marginTop = '20px';
-            proceedBtn.style.background = 'linear-gradient(90deg, #4CAF50, #2e7d32)';
-            proceedBtn.style.color = '#fff';
-            proceedBtn.style.fontWeight = '700';
-            proceedBtn.addEventListener('click', showResultScreen);
-            e.target.parentNode.after(proceedBtn);
-        }
-    });
+    button.addEventListener('click', handleCategorySelection);
 });
+
 
 // Evento para o formulário de pré-cadastro (TELA 1)
 preCadastroForm.addEventListener('submit', (e) => {
     e.preventDefault();
-    
+
     // Simples validação de que a categoria foi escolhida (apenas para aprovados)
     if (score >= MIN_SCORE && !cnhCategory) {
         alert("Por favor, selecione a Categoria da sua CNH.");
@@ -901,10 +984,6 @@ payBtn.addEventListener('click', () => {
         alert("Link de pagamento não configurado.");
     }
 });
-
-
-// Garantir que a primeira pergunta seja exibida quando o quiz começar.
-// Com a nova tela de boas-vindas, showQuestion será chamada por startQuiz.
 </script>
 
 </body>
